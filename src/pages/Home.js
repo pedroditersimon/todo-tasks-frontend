@@ -1,30 +1,33 @@
 import ApiClientService from "../api/services/ApiClientService";
 import PageLayout from "../layouts/PageLayout";
 
-import { useEffect } from "react";
-import { TodoTask } from "../api/models/models";
+import { useEffect, useState } from "react";
+import { TodoGoal, TodoTask } from "../api/models";
+import TaskCard from "../components/TaskCard";
+import GoalCard from "../components/GoalCard";
+
+import ProgressBar from "../components/ProgressBar";
 
 function Home() {
+    const [task, setTask] = useState(new TodoTask());
+    const [goal, setGoal] = useState(new TodoGoal());
+
     useEffect(() => {
-        fetchData()
-            .then(data => console.log(data));
+        const apiClientService = new ApiClientService();
+
+        apiClientService.getTaskById(1)
+            .then(t => {t.description+="asddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddasdddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddd";setTask(t)});
+
+        apiClientService.getGoalById(1)
+                .then(t => setGoal(t));
     }, []);
 
     return (
         <PageLayout>
-            home page
+            <TaskCard task={task} />
+            <GoalCard goal={goal} />
         </PageLayout>
     );
 }
-
-async function fetchData() {
-    try {
-        const apiClientService = new ApiClientService();
-        return await apiClientService.getGoalByIdWithTasks(1);
-    } catch (error) {
-        console.error('Error fetching data:', error);
-        return [];
-    }
-};
 
 export default Home;
