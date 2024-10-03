@@ -37,19 +37,6 @@ function Home() {
 
     return (
         <PageLayout>
-            <br /><br />
-            <CreateTaskForm accept_callback={()=>console.log("gola")} close_callback={()=>console.log("chau")} />
-            <br /><br />
-            <EditTaskForm accept_callback={()=>console.log("gola")} close_callback={()=>console.log("chau")} />
-            <br /><br />
-            <CreateGoalForm accept_callback={()=>console.log("gola")} close_callback={()=>console.log("chau")} />
-            <br /><br />
-            <EditGoalForm accept_callback={()=>console.log("gola")} close_callback={()=>console.log("chau")} />
-            <br /><br />
-            <SelectListForm title="Tasks" >
-                {tasks.map(t => <SelectableCard title={t.name} />)}
-            </SelectListForm>
-            <br /><br />
             <ElementList title="Tasks">
                 {tasks.map(t => <TaskCard task={t} />)}
             </ElementList>
@@ -57,7 +44,19 @@ function Home() {
             <ElementList title="Goals">
                 {goals.map(g => <GoalCard goal={g} />)}
             </ElementList>
+            
             <br /><br />
+            <CreateTaskForm accept_callback={()=>console.log("gola")} close_callback={()=>console.log("chau")} />
+            <br /><br />
+            <EditTaskForm task={tasks[Math.floor(Math.random() * tasks.length)] || undefined} />
+            <br /><br />
+            <CreateGoalForm accept_callback={()=>console.log("gola")} close_callback={()=>console.log("chau")} />
+            <br /><br />
+            <EditGoalForm accept_callback={()=>console.log("gola")} close_callback={()=>console.log("chau")} />
+            <br /><br />
+            <SelectListForm title="Goals" >
+                {goals.map(g => <SelectableCard title={g.name} description={g.description} />)}
+            </SelectListForm>
         </PageLayout>
     );
 }

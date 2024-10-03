@@ -2,3 +2,12 @@
     display: flex;
     align-items: center;
 }
+
+.icon-button img {
+    border-radius: 50%;
+    padding: 3px;
+}
+
+.icon-button:hover img {
+    background-color: rgba(0, 0, 0, 0.1);
+}

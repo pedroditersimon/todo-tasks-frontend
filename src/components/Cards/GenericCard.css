@@ -10,6 +10,12 @@
     gap:  0.8vw;
 
     height: 7vh;
+    border-radius: 8px;
+    padding: 1vh;
+}
+
+.card:hover {
+    background-color: rgba(0, 0, 0, 0.1);
 }
 
 .card-body {
@@ -52,6 +58,7 @@
 .icon-button.card-primary-icon {
     align-items: start;
 }
+
 
 
 .card-status {

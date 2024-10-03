@@ -1,13 +1,11 @@
-import { useRef } from "react";
-import FormField from "../Forms/FormField";
+import {  useState } from "react";
 import "./SwitchField.css";
 
-function SwitchField({ error_msg, children}) {
-    const switchRef = useRef(null);
+function SwitchField({ error_msg, value, children }) {
+    const [selected, setSelected] = useState(value);
 
     function onSwitchClick() {
-        const switchElement = switchRef.current;
-        switchElement.checked = !switchElement.checked;
+        setSelected((prevSelected) => !prevSelected); // Alternar el estado
     }
 
     return (
@@ -16,8 +14,12 @@ function SwitchField({ error_msg, children}) {
                 <div className="switch-field-title">
                     <span>{children}</span>
                 </div>
-                <input ref={switchRef} type="checkbox" />
-                <slider className="slider" />
+                <input
+                    type="checkbox"
+                    checked={selected}
+                    onChange={onSwitchClick}
+                />
+                <div className="slider" />
             </div>
 
             <div className="switch-field-error">
@@ -26,5 +28,6 @@ function SwitchField({ error_msg, children}) {
         </div>
     );
 }
+
 
 export default SwitchField;

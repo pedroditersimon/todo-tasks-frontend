@@ -1,22 +1,26 @@
 
-import { useState } from "react";
+import { useState, useEffect } from "react";
+
 import check_icon from "../../assets/images/check.png";
+
 import GenericCard from "./GenericCard";
 
-function SelectableCard({ title, children }) {
+import "./SelectableCard.css";
+
+function SelectableCard({ title, description }) {
     const [selected, setSelected] = useState(false);
 
     function toggleSelect() {
-        setSelected(!selected);
+        setSelected((prevSelected) => !prevSelected);
     }
-
+    
     return (
         <GenericCard
             title={title}
             primary_icon={selected? check_icon : null}
             onClick={toggleSelect}
-            >
-                {children}
+        >
+            <span className="selectable-card-description">{description}</span>
         </GenericCard>
     );
 }

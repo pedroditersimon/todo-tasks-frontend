@@ -1,5 +1,7 @@
 import "./GoalCard.css";
+
 import star_icon from "../../assets/images/star.png";
+import star_filled_icon from "../../assets/images/star_filled.png";
 import check_icon from "../../assets/images/check.png";
 
 import ProgressBar from "../ProgressBar";
@@ -21,9 +23,10 @@ function GoalCard({ goal }) {
         <GenericCard
             title={goal.name}
             primary_icon={star_icon}
+            primary_icon_hover={star_filled_icon}
             secondary_icon={goal_progress>=1.0?check_icon:null}
-            >
-                <ProgressBar value={goal_progress} />
+        >
+            <ProgressBar value={goal_progress} />
         </GenericCard>
     );
 }

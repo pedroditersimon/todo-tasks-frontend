@@ -3,8 +3,8 @@ import FormField from "../Forms/FormField.js";
 
 import { useEffect, useState, useRef } from "react";
 
-function TextAreaInput({title, error_msg, placeholder="Value"}) {
-    const [value, setValue] = useState("");
+function TextAreaInput({title, value, error_msg, placeholder="Value"}) {
+    const [textValue, setTextValue] = useState("");
     const textareaRef = useRef(null);
 
     function adjustHeight() {
@@ -15,7 +15,7 @@ function TextAreaInput({title, error_msg, placeholder="Value"}) {
 
     useEffect(() => {
         adjustHeight();
-    }, [value]);
+    }, [textValue]);
 
     return (
         <FormField title={title} error_msg={error_msg}>
@@ -23,7 +23,8 @@ function TextAreaInput({title, error_msg, placeholder="Value"}) {
                 ref={textareaRef}
                 className="text-area-value"
                 placeholder={placeholder}
-                onChange={(e) => setValue(e.target.value)}
+                value={textValue}
+                onChange={(e) => setTextValue(e.target.value)}
             />
         </FormField>
     );
