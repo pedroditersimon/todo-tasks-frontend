@@ -4,20 +4,17 @@ import check_icon from "../assets/images/check.png";
 
 import ProgressBar from "./ProgressBar";
 
+import GenericCard from "./GenericCard";
+
 function GoalCard({ goal }) {
     return (
-        <div className="goal-card">
-            <div className="goal-favorite">
-                <img src={star_icon} />
-            </div>
-            <div className="goal-body">
-                <span className="goal-title">{goal.name}</span>
+        <GenericCard
+            title={goal.name}
+            primary_icon={star_icon}
+            secondary_icon={check_icon}
+            >
                 <ProgressBar />
-            </div>
-            <div className="goal-status">
-                <img src={check_icon} />
-            </div>
-        </div>
+        </GenericCard>
     );
 }
 

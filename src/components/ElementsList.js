@@ -1,6 +1,8 @@
 import plus_icon from "../assets/images/Plus.png";
 import "./ElementsList.css";
 
+import Separator from "./Separator";
+
 function ElementList({ tittle, children}) {
     return (
         <div className="element-list">
@@ -10,7 +12,7 @@ function ElementList({ tittle, children}) {
                     <img src={plus_icon} />
                 </div>
             </div>
-            <div className="element-list-separator"></div>
+            <Separator />
             <div className="element-list-body">
                 {children}
             </div>

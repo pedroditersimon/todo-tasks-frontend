@@ -25,12 +25,15 @@ function Home() {
 
     return (
         <PageLayout>
+            <br /><br />
             <ElementList tittle="Tasks">
                 {tasks.map(t => <TaskCard task={t} />)}
             </ElementList>
+            <br /><br />
             <ElementList tittle="Goals">
                 {goals.map(g => <GoalCard goal={g} />)}
             </ElementList>
+            <br /><br />
         </PageLayout>
     );
 }
