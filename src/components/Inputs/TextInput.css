@@ -1,0 +1,11 @@
+.text-input {
+    display: flex;
+    flex-direction: column;
+}
+
+.text-input-title {
+    display: flex;
+    flex-direction: row;
+
+    align-items: start;
+}

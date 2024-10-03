@@ -1,0 +1,38 @@
+
+.form {
+    display: flex;
+    flex-direction: column;
+
+    gap: 3vh;
+
+    background-color: #FFFFFF;
+    border: 1.5px solid #D9D9D9;
+    border-radius: 8px;
+
+    padding: 1.5vw 2vw 2vw;
+
+    font-size: large;
+    font-weight: 400;
+}
+
+.form-header {
+    display: flex;
+    flex-direction: row;
+
+    justify-content: space-between; /* Coloca los elementos al principio y al final */
+    align-items: center;
+}
+
+
+.form-header-title {
+    margin: 0 auto;
+}
+
+.form-btn {
+    color: #F5F5F5;
+    background-color: #2C2C2C;
+
+    padding: 2vh;
+
+    border-radius: 8px;
+}
