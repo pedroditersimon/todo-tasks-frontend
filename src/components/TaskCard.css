@@ -9,7 +9,7 @@
     flex-direction: row;
     gap:  0.8vw;
 
-    height: auto;
+    height: 40px;
 }
 
 .task-body {
@@ -21,6 +21,10 @@
     text-align: left;
 
     overflow: hidden;
+
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap
 }
 
 .task-title {
@@ -28,20 +32,13 @@
     font-weight: 400;
 
     color: #1E1E1E;
-
-    overflow: hidden;
-    text-overflow: ellipsis;
-    white-space: nowrap
 }
+
 .task-description {
     font-size: medium;
     font-weight: 300;
 
     color: #757575;
-    
-    overflow: hidden;
-    text-overflow: ellipsis;
-    white-space: nowrap
 }
 
 /*

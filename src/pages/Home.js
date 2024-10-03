@@ -7,25 +7,30 @@ import TaskCard from "../components/TaskCard";
 import GoalCard from "../components/GoalCard";
 
 import ProgressBar from "../components/ProgressBar";
+import ElementList from "../components/ElementsList";
 
 function Home() {
-    const [task, setTask] = useState(new TodoTask());
-    const [goal, setGoal] = useState(new TodoGoal());
+    const [tasks, setTasks] = useState([]);
+    const [goals, setGoals] = useState([]);
 
     useEffect(() => {
         const apiClientService = new ApiClientService();
 
-        apiClientService.getTaskById(1)
-            .then(t => {t.description+="asddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddasdddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddd";setTask(t)});
+        apiClientService.getAllTasks()
+            .then(ts => setTasks(ts));
 
-        apiClientService.getGoalById(1)
-                .then(t => setGoal(t));
+        apiClientService.getAllGoals()
+            .then(gs => setGoals(gs));
     }, []);
 
     return (
         <PageLayout>
-            <TaskCard task={task} />
-            <GoalCard goal={goal} />
+            <ElementList tittle="Tasks">
+                {tasks.map(t => <TaskCard task={t} />)}
+            </ElementList>
+            <ElementList tittle="Goals">
+                {goals.map(g => <GoalCard goal={g} />)}
+            </ElementList>
         </PageLayout>
     );
 }
