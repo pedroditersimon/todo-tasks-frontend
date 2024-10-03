@@ -1,11 +1,10 @@
 import "./GenericCard.css";
+import IconButton from "../Inputs/IconButton";
 
-function GenericCard({ title, primary_icon, secondary_icon, children  }) {
+function GenericCard({ title, onClick, primary_callback, primary_icon, secondary_icon, children  }) {
     return (
-        <div className="card">
-            <div className="card-primary-icon">
-                <img src={primary_icon} />
-            </div>
+        <div onClick={onClick} className="card btn">
+            <IconButton className="card-primary-icon" callback={primary_callback} icon={primary_icon} />
             <div className="card-body">
                 <span className="card-title">{title}</span>
                 {children}

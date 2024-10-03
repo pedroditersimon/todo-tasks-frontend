@@ -48,11 +48,11 @@
     white-space: nowrap
 }
 
-/*
-.card-favorite {
 
+.icon-button.card-primary-icon {
+    align-items: start;
 }
-*/
+
 
 .card-status {
     margin: auto 0;

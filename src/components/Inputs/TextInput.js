@@ -1,14 +1,13 @@
 
 import "./TextInput.css";
 
-function TextInput() {
+import FormField from "../Forms/FormField.js";
+
+function TextInput({title, error_msg, placeholder="Value"}) {
     return (
-        <div className="text-input">
-            <div className="text-input-title">
-                <span>titulo</span>
-            </div>
-            <input className="text-input-value" type="text" />
-        </div>
+        <FormField title={title} error_msg={error_msg}>
+            <input className="text-input-value" placeholder={placeholder} type="text" />
+        </FormField>
     );
 }
 

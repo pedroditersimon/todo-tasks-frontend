@@ -1,25 +1,31 @@
 import close_icon from "../../assets/images/close.png";
 
-import Button from "../Button";
+import Button from "../Inputs/Button";
+import IconButton from "../Inputs/IconButton";
 import "./GenericForm.css";
 
-function GenericForm({ accept_callback, close_callback, children}) {
+function GenericForm({ title="title", accept_callback, accept_text="Button", primary_callback, primary_icon=close_icon, secondary_callback, secondary_icon, children}) {
     return (
         <div className="form">
             <div className="form-header">
-                <span className="form-header-title">Title</span>
-                <div className="form-header-close-btn" onClick={close_callback}>
-                    <img src={close_icon} />
-                </div>
+                <IconButton
+                    className="form-header-secondary-btn"
+                    onClick={secondary_callback}
+                    icon={secondary_icon}
+                />
+                <span className="form-header-title">{title}</span>
+                <IconButton
+                    className="form-header-primary-btn"
+                    onClick={primary_callback}
+                    icon={primary_icon}
+                />
             </div>
 
             <div className="form-body">
                 {children}
             </div>
 
-            <div className="form-btn" onClick={accept_callback}>
-                <Button>Boton</Button>
-            </div>
+            <Button callback={accept_callback} className="form-btn" >{accept_text}</Button>
         </div>
     );
 }

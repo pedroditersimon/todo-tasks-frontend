@@ -1,0 +1,55 @@
+/* Estilos generales para el switch */
+.switch-field-body {
+    display: flex;
+    flex-direction: row;
+
+    justify-content: space-between;
+    align-items: center;
+}
+
+.switch-field-body:hover {
+    cursor: pointer;
+}
+
+.switch-field-title {
+    margin-right: 10px;
+}
+
+/* Estilos del input checkbox */
+.switch-field-body input[type="checkbox"] {
+    display: none; /* Oculta el checkbox */
+}
+
+/* Estilos del slider */
+.slider {
+    position: relative;
+    width: 60px;
+    height: 34px;
+    background-color: #ccc;
+    border-radius: 34px;
+    cursor: pointer;
+    transition: background-color 0.4s;
+}
+
+/* El círculo dentro del slider */
+.slider::before {
+    content: "";
+    position: absolute;
+    width: 26px;
+    height: 26px;
+    left: 4px;
+    bottom: 4px;
+    background-color: white;
+    border-radius: 50%;
+    transition: transform 0.4s;
+}
+
+/* Cuando el checkbox está seleccionado (checked) */
+.switch-field-body input[type="checkbox"]:checked + .slider {
+    background-color: #2C2C2C; /* Cambia el color del slider */
+}
+
+/* Mueve el círculo cuando el checkbox está seleccionado */
+.switch-field-body input[type="checkbox"]:checked + .slider::before {
+    transform: translateX(26px);
+}

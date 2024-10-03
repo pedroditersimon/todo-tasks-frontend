@@ -19,13 +19,21 @@
     display: flex;
     flex-direction: row;
 
-    justify-content: space-between; /* Coloca los elementos al principio y al final */
+    justify-content: space-between;
     align-items: center;
 }
 
-
+/*
 .form-header-title {
-    margin: 0 auto;
+
+}
+*/
+
+.form-body {
+    display: flex;
+    flex-direction: column;
+
+    gap: 3vh;
 }
 
 .form-btn {
@@ -36,3 +44,4 @@
 
     border-radius: 8px;
 }
+

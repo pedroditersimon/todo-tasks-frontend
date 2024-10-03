@@ -1,16 +1,20 @@
 
-.text-input-value {
+.text-area-value {
     background-color: #FFFFFF;
     border: 1.5px solid #D9D9D9;
     border-radius: 8px;
 
     min-height: 6vh;
-    padding: 0.5vh 1vw;
+    padding: 1.5vh 1vw 0;
 
+    font-family: "Ubuntu", sans-serif;
     font-size: large;
     font-weight: 400;
+
+    resize: none;
+    overflow-y: hidden;
 }
-.text-input-value::placeholder {
+.text-area-value::placeholder {
     color: #B3B3B3;
 }
 

@@ -14,14 +14,9 @@
     align-items: center;
 }
 
-.element-list-header-tittle {
+.element-list-header-title {
     margin: 0 auto;
     color: #757575;
-}
-.element-list-header-plus {
-    display: flex;
-    justify-content: center;
-    align-items: center;
 }
 
 .element-list-body, .element-list-header {

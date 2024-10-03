@@ -3,13 +3,22 @@ import PageLayout from "../layouts/PageLayout";
 
 import { useEffect, useState } from "react";
 import { TodoGoal, TodoTask } from "../api/models";
-import TaskCard from "../components/TaskCard";
-import GoalCard from "../components/GoalCard";
+import TaskCard from "../components/Cards/TaskCard";
+import GoalCard from "../components/Cards/GoalCard";
 
 import ProgressBar from "../components/ProgressBar";
 import ElementList from "../components/ElementsList";
 
+
 import CreateTaskForm from "../components/Forms/CreateTaskForm";
+import EditTaskForm from "../components/Forms/EditTaskForm";
+
+import CreateGoalForm from "../components/Forms/CreateGoalForm";
+
+import SelectListForm from "../components/Forms/SelectListForm";
+import EditGoalForm from "../components/Forms/EditGoalForm";
+
+import SelectableCard from "../components/Cards/SelectableCard";
 
 function Home() {
     const [tasks, setTasks] = useState([]);
@@ -29,15 +38,23 @@ function Home() {
     return (
         <PageLayout>
             <br /><br />
-            <CreateTaskForm accept_callback={()=>console.log("gola")} close_callback={()=>console.log("chau")}>
-                Body, cuerpo
-            </CreateTaskForm>
+            <CreateTaskForm accept_callback={()=>console.log("gola")} close_callback={()=>console.log("chau")} />
             <br /><br />
-            <ElementList tittle="Tasks">
+            <EditTaskForm accept_callback={()=>console.log("gola")} close_callback={()=>console.log("chau")} />
+            <br /><br />
+            <CreateGoalForm accept_callback={()=>console.log("gola")} close_callback={()=>console.log("chau")} />
+            <br /><br />
+            <EditGoalForm accept_callback={()=>console.log("gola")} close_callback={()=>console.log("chau")} />
+            <br /><br />
+            <SelectListForm title="Tasks" >
+                {tasks.map(t => <SelectableCard title={t.name} />)}
+            </SelectListForm>
+            <br /><br />
+            <ElementList title="Tasks">
                 {tasks.map(t => <TaskCard task={t} />)}
             </ElementList>
             <br /><br />
-            <ElementList tittle="Goals">
+            <ElementList title="Goals">
                 {goals.map(g => <GoalCard goal={g} />)}
             </ElementList>
             <br /><br />

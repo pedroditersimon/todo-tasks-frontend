@@ -1,8 +1,8 @@
 import "./GoalCard.css";
-import star_icon from "../assets/images/star.png";
-import check_icon from "../assets/images/check.png";
+import star_icon from "../../assets/images/star.png";
+import check_icon from "../../assets/images/check.png";
 
-import ProgressBar from "./ProgressBar";
+import ProgressBar from "../ProgressBar";
 
 import GenericCard from "./GenericCard";
 
