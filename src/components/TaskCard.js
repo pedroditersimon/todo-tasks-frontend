@@ -8,25 +8,10 @@ function TaskCard({ task }) {
         <GenericCard
             title={task.name}
             primary_icon={star_icon}
-            secondary_icon={check_icon}
+            secondary_icon={task.isCompleted? check_icon : null}
             >
                 <span className="task-description">{task.description}</span>
         </GenericCard>
-    );
-
-    return (
-        <div className="task-card">
-            <div className="task-favorite">
-                <img src={star_icon} />
-            </div>
-            <div className="task-body">
-                <span className="task-title">{task.name}</span>
-                <span className="task-description">{task.description}</span>
-            </div>
-            <div className="task-status">
-                <img src={check_icon} />
-            </div>
-        </div>
     );
 }
 
