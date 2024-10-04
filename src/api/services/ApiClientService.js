@@ -31,7 +31,7 @@ class ApiClientService {
     }
 
     async createTask(task) {
-        const data = await this.httpClient.post("tasks", task);
+        const data = await this.httpClient.post("Tasks", task);
         if (data == null) throw new Error("409 Conflict");
         return TodoTask.fromJSON(data);
     }

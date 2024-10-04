@@ -12,9 +12,9 @@ export class TodoTask {
         const task = new TodoTask();
         Object.assign(task, {
             id: json.id,
-            creationDate: new Date(json.creationDate), // Convert to Date
+            creationDate: json.creationDate? new Date(json.creationDate) : undefined, // Convert to Date
             isDeleted: json.isDeleted,
-            lastUpdatedTime: new Date(json.lastUpdatedTime), // Convert to Date
+            lastUpdatedTime: json.lastUpdatedTime? new Date(json.lastUpdatedTime) : undefined, // Convert to Date
             
             name: json.name,
             description: json.description,
@@ -22,6 +22,7 @@ export class TodoTask {
         });
         return task;
     }
+
 }
 
 export class TodoGoal {
@@ -38,10 +39,10 @@ export class TodoGoal {
         const goal = new TodoGoal();
         Object.assign(goal, {
             id: json.id,
-            creationDate: new Date(json.creationDate), // Convert to Date
+            creationDate: json.creationDate? new Date(json.creationDate) : undefined, // Convert to Date
             isDeleted: json.isDeleted,
-            lastUpdatedTime: new Date(json.lastUpdatedTime), // Convert to Date
-
+            lastUpdatedTime: json.lastUpdatedTime? new Date(json.lastUpdatedTime) : undefined, // Convert to Date
+            
             name: json.name,
             description: json.description,
             tasks: json.tasks || [] // Assign tasks, default to empty array if not provided
