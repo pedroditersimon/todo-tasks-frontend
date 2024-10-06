@@ -1,11 +1,15 @@
-import {  useState } from "react";
+import {  useEffect, useState } from "react";
 import "./SwitchField.css";
 
-function SwitchField({ error_msg, value, children }) {
+function SwitchField({ error_msg, value, onToggle, children }) {
     const [selected, setSelected] = useState(value);
+
+    // update selected when value is modified
+    useEffect(() => setSelected(value), [value]);
 
     function onSwitchClick() {
         setSelected((prevSelected) => !prevSelected); // Alternar el estado
+        if (onToggle) onToggle(!selected);
     }
 
     return (

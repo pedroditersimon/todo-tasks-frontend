@@ -4,21 +4,43 @@ import Button from "../Inputs/Button";
 import IconButton from "../Inputs/IconButton";
 import "./GenericForm.css";
 
-function GenericForm({ title="title", accept_callback, accept_text="Button", primary_callback, primary_icon=close_icon, secondary_callback, secondary_icon, secondary_icon_hover, children}) {
+
+function GenericForm({
+        title = "Form",
+        onConfirm,
+        confirm_text = "Button",
+
+        onSecondaryConfirm,
+        secondary_confirm_icon,
+        secondary_confirm_icon_hover,
+
+        onHeaderPrimaryBtn,
+        header_primary_icon,
+        header_primary_icon_hover,
+
+        onHeaderSecondaryBtn,
+        header_secondary_icon = close_icon,
+        header_secondary_icon_hover,
+
+        children
+    })
+{
+
     return (
         <div className="form">
             <div className="form-header">
                 <IconButton
-                    className="form-header-secondary-btn"
-                    onClick={secondary_callback}
-                    icon={secondary_icon}
-                    icon_hover={secondary_icon_hover}
+                    className="form-header-primary-btn"
+                    onClick={onHeaderPrimaryBtn}
+                    icon={header_primary_icon}
+                    icon_hover={header_primary_icon_hover}
                 />
                 <span className="form-header-title">{title}</span>
                 <IconButton
-                    className="form-header-primary-btn"
-                    onClick={primary_callback}
-                    icon={primary_icon}
+                    className="form-header-secondary-btn"
+                    onClick={onHeaderSecondaryBtn}
+                    icon={header_secondary_icon}
+                    icon_hover={header_secondary_icon_hover}
                 />
             </div>
 
@@ -26,7 +48,14 @@ function GenericForm({ title="title", accept_callback, accept_text="Button", pri
                 {children}
             </div>
 
-            <Button callback={accept_callback} className="form-btn" >{accept_text}</Button>
+            <div className="form-confirm">
+                { secondary_confirm_icon?
+                    <IconButton onClick={onSecondaryConfirm} icon={secondary_confirm_icon} icon_hover={secondary_confirm_icon_hover} className="form-confirm-btn secondary" />
+                : null}
+
+                <Button onClick={onConfirm} className="form-confirm-btn" >{confirm_text}</Button>
+            </div>
+            
         </div>
     );
 }

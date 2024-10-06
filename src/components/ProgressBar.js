@@ -1,17 +1,13 @@
 import "./ProgressBar.css";
 
-// value from 0 to 1.0
-function ProgressBar({ value= 0.1, color, backgroundColor }) {
+// value from 0 to 100
+function ProgressBar({ value }) {
     return (
-        <div
-            className="progress-bar"
-            style= {{'backgroundColor': backgroundColor}}
-        >
+        <div className="progress-bar">
             <div 
-                className="progress-bar-fill" 
+                className={`progress-bar-fill ${value>=100?"completed":""}`}
                 style= {{
-                    width: `${value * 100}%`,
-                    'backgroundColor': color
+                    width: `${value}%`
                 }}
             />
         </div>

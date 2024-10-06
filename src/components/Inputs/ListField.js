@@ -4,12 +4,12 @@ import edit_icon from "../../assets/images/edit.png";
 import IconButton from "../Inputs/IconButton.js";
 import FormField from "../Forms/FormField.js";
 
-function ListField({title, error_msg, callback, children}) {
+function ListField({title, error_msg, onClick, children}) {
     return (
-        <FormField title={title} error_msg={error_msg}>
-            <div className="list-field-value">
+        <FormField title={title} error_msg={error_msg} >
+            <div className="list-field-value" onClick={onClick}>
                 <span>{children}</span>
-                <IconButton callback={callback} icon={edit_icon} />
+                <IconButton icon={edit_icon} />
             </div>
         </FormField>
     );

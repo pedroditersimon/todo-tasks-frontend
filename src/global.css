@@ -1,4 +1,45 @@
 
+
+:root {
+    /* color pallete */
+    --color-primary-text: #1E1E1E;
+    --color-secondary-text: #757575;
+    
+    --color-primary: #2C2C2C;
+    --color-primary-hover:#242424;
+
+    --color-secondary: #F5F5F5;
+    --color-secondary-hover: #e0e0e0;
+
+    --color-background: #FFFFFF;
+    --color-background-hover: #D9D9D9;
+
+    /* accent is used on buttons and highlights text */
+    --color-accent: #007AFF;
+    --color-accent-hover:#086cd6;
+
+    --color-warning: #ed4337;
+
+    /* this define EM and REM size */
+    font-size: calc(1vh + 1.1vw); 
+
+    /* some preset text sizes */
+    --primary-text-size: 1rem;
+    --secondary-text-size: 0.8rem;
+    --small-text-size: 0.7rem;
+
+
+    /* sizes */
+    --size-medium: calc(1vw + 3.5vh);
+    --size-small: calc(1vw + 2vh);
+    --size-smaller: calc(0.1vw + 1.5vh);
+    --size-tiny: calc(0.1vw + 0.05vh);
+
+    --size-border: calc(0.1vw + 0.2vh);
+    --size-border-smaller: calc(0.1vw + 0.2vh);
+    --size-radius-border: calc(0.1vw + 1vh); 
+}
+
 /*
 .btn {
 

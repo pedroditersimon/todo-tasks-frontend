@@ -7,24 +7,28 @@ import { TodoGoal } from "../../api/models";
 import ApiClientService from "../../api/services/ApiClientService";
 import { useState } from "react";
 
-function CreateGoalForm() {
-    const [goalName, setGoalName] = useState("");
-    const [goalDescription, setGoalDescription] = useState("");
+function CreateGoalForm({ goal }) {
+    const [currentGoal, setCurrentGoal] = useState(goal || {});
 
     async function createGoal() {
-        const apiClientService = new ApiClientService();
-        var goal = TodoGoal.fromJSON({
-            name: goalName,
-            description: goalDescription
-        });
+        const apiClientService = new ApiClientService(); // change this for a singleton
+        //await apiClientService.createGoal(currentGoal);
+    }
 
-        await apiClientService.createGoal(goal);
+    function setName(value) {
+        currentGoal.name = value;
+        setCurrentGoal(TodoGoal.fromJSON(currentGoal));
+    }
+
+    function setDescription(value) {
+        currentGoal.description = value;
+        setCurrentGoal(TodoGoal.fromJSON(currentGoal));
     }
 
     return (
-        <GenericForm title="New goal" accept_text="Create" accept_callback={createGoal} >
-            <TextInput title="Name" value={goalName} onChange={(e) => setGoalName(e.target.value)} />
-            <TextAreaInput title="Description" value={goalDescription} onChange={(e) => setGoalDescription(e.target.value)} />
+        <GenericForm title="New goal" confirm_text="Create" onConfirm={createGoal} >
+            <TextInput title="Name" value={currentGoal.name} onChange={setName} />
+            <TextAreaInput title="Description" value={currentGoal.description} onChange={setDescription} />
             <ListField title="Tasks">Item 1, Item 2</ListField>
         </GenericForm>
     );

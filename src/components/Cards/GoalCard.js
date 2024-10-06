@@ -7,26 +7,28 @@ import check_icon from "../../assets/images/check.png";
 import ProgressBar from "../ProgressBar";
 
 import GenericCard from "./GenericCard";
+import { TodoGoal } from "../../api/models";
+import { useState } from "react";
 
 function GoalCard({ goal }) {
+    const [currentGoal, setCurrentGoal] = useState(goal);
 
-    // calculate the goal progress by tasks
-    var goal_progress = 0;
-    if (goal.tasks && goal.tasks.length > 0) {
-        // count completed tasks
-        var completed_tasks_count = goal.tasks.reduce((accumulator, t) => accumulator + (t.isCompleted?1:0), 0);
-        // get progress percent
-        goal_progress = completed_tasks_count/goal.tasks.length;
+    function toggleFavorite() {
+        currentGoal.isFavorite = !currentGoal.isFavorite;
+        setCurrentGoal(TodoGoal.fromJSON(currentGoal));
+        // TODO: api call
     }
 
     return (
         <GenericCard
-            title={goal.name}
-            primary_icon={star_icon}
-            primary_icon_hover={star_filled_icon}
-            secondary_icon={goal_progress>=1.0?check_icon:null}
+            title={currentGoal.name}
+
+            onPrimaryBtn={toggleFavorite}
+            primary_icon={currentGoal.isFavorite? star_filled_icon : star_icon}
+
+            secondary_icon={currentGoal.isCompleted? check_icon : null}
         >
-            <ProgressBar value={goal_progress} />
+            <ProgressBar value={currentGoal.completedPercent} />
         </GenericCard>
     );
 }

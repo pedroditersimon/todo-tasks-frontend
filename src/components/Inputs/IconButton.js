@@ -2,17 +2,16 @@
 import { useState, useEffect } from "react";
 import "./IconButton.css";
 
-function IconButton({callback, className, icon, icon_hover}) {
+function IconButton({ onClick, className, icon, icon_hover }) {
     const [currentIcon, setCurrentIcon] = useState(icon);
-    
-    useEffect(() => {
-        setCurrentIcon(icon);
-    }, [icon]);
+
+    // update currentIcon when icon is modified
+    useEffect(() => setCurrentIcon(icon), [icon]);
 
     return (
         <div
             className={`btn icon-button ${className}`}
-            onClick={callback}
+            onClick={onClick}
             onMouseLeave={() => setCurrentIcon(icon)}
             onMouseEnter={() => setCurrentIcon(icon_hover??icon)}
         >

@@ -15,14 +15,17 @@ import EditTaskForm from "../components/Forms/EditTaskForm";
 
 import CreateGoalForm from "../components/Forms/CreateGoalForm";
 
-import SelectListForm from "../components/Forms/SelectListForm";
+import SelectListForm, { ListItem } from "../components/Forms/SelectListForm";
 import EditGoalForm from "../components/Forms/EditGoalForm";
 
 import SelectableCard from "../components/Cards/SelectableCard";
 
 function Home() {
-    const [tasks, setTasks] = useState([]);
-    const [goals, setGoals] = useState([]);
+    const [tasks, setTasks] = useState([TodoTask.fromJSON({name:"Titulo ola", description:"Description description", isCompleted:true})]);
+    const [goals, setGoals] = useState([TodoGoal.fromJSON({name:"Titulo ola", description:"Description description", isCompleted:true,completedPercent:50})]);
+
+    console.log(tasks);
+    console.log(goals);
 
     useEffect(() => {
         const apiClientService = new ApiClientService();
@@ -31,7 +34,7 @@ function Home() {
             .then(ts => setTasks(ts));
         
         // DONT USE THIS, use getAllGoals() instead
-        apiClientService.getAllGoalsWithTasks()
+        apiClientService.getAllGoals()
             .then(gs => setGoals(gs));
     }, []);
 
@@ -46,17 +49,15 @@ function Home() {
             </ElementList>
             
             <br /><br />
-            <CreateTaskForm accept_callback={()=>console.log("gola")} close_callback={()=>console.log("chau")} />
+            <CreateTaskForm  />
             <br /><br />
             <EditTaskForm task={tasks[Math.floor(Math.random() * tasks.length)] || undefined} />
             <br /><br />
-            <CreateGoalForm accept_callback={()=>console.log("gola")} close_callback={()=>console.log("chau")} />
+            <CreateGoalForm />
             <br /><br />
-            <EditGoalForm accept_callback={()=>console.log("gola")} close_callback={()=>console.log("chau")} />
+            <EditGoalForm goal={goals[Math.floor(Math.random() * goals.length)] || undefined} />
             <br /><br />
-            <SelectListForm title="Goals" >
-                {goals.map(g => <SelectableCard title={g.name} description={g.description} />)}
-            </SelectListForm>
+            <SelectListForm title="Goals" items={goals.map(g => ListItem.FromTodoGoal(g))} />
         </PageLayout>
     );
 }

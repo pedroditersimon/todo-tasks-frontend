@@ -12,9 +12,8 @@ function ElementList({ title, create_callback, children}) {
                 <IconButton callback={create_callback} icon={plus_icon} />
             </div>
             <Separator />
-            <div className="element-list-body">
-                {children}
-            </div>
+            
+            {children}
         </div>
     );
 }

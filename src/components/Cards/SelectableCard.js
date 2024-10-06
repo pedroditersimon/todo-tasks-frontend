@@ -7,17 +7,19 @@ import GenericCard from "./GenericCard";
 
 import "./SelectableCard.css";
 
-function SelectableCard({ title, description }) {
-    const [selected, setSelected] = useState(false);
-
+function SelectableCard({ title, description, value=false, onToggle }) {
+    const [isSelected, setIsSelected] = useState(value);
+    
     function toggleSelect() {
-        setSelected((prevSelected) => !prevSelected);
+        setIsSelected((prevSelected) => !prevSelected);
+
+        if (onToggle) onToggle(isSelected);
     }
     
     return (
         <GenericCard
             title={title}
-            primary_icon={selected? check_icon : null}
+            primary_icon={isSelected? check_icon : null}
             onClick={toggleSelect}
         >
             <span className="selectable-card-description">{description}</span>

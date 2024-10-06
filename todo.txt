@@ -1,0 +1,3 @@
+Todo:
+- Agregar paginacion
+- Usar REM y EM para todos los tamaños

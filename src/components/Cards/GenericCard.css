@@ -7,15 +7,15 @@
 
     display: flex;
     flex-direction: row;
-    gap:  0.8vw;
+    gap: var(--size-smaller);
 
-    height: 7vh;
-    border-radius: 8px;
-    padding: 1vh;
+    height: auto;
+    border-radius: var(--size-radius-border);
+    padding: var(--size-smaller);
 }
 
 .card:hover {
-    background-color: rgba(0, 0, 0, 0.1);
+    background-color: var(--color-secondary);
 }
 
 .card-body {
@@ -39,13 +39,13 @@
     font-size: large;
     font-weight: 400;
 
-    color: #1E1E1E;
+    color: var(--color-primary-text);
 }
 .card-descriptcion {
     font-size: medium;
     font-weight: 300;
 
-    color: #757575;
+    color: var(--color-secondary-text);
 
 }
 .card-body > * {

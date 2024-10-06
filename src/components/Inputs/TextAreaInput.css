@@ -1,11 +1,10 @@
 
 .text-area-value {
-    background-color: #FFFFFF;
-    border: 1.5px solid #D9D9D9;
-    border-radius: 8px;
+    background-color: var(--color-background);
+    border: var(--size-border) solid var(--color-background-hover);
+    border-radius: var(--size-radius-border);
 
-    min-height: 6vh;
-    padding: 1.5vh 1vw 0;
+    padding: var(--size-smaller) var(--size-smaller);
 
     font-family: "Ubuntu", sans-serif;
     font-size: large;
@@ -13,8 +12,13 @@
 
     resize: none;
     overflow-y: hidden;
+
+    color: var(--color-primary);
 }
 .text-area-value::placeholder {
-    color: #B3B3B3;
+    color: var(--color-secondary-text);
 }
 
+.text-area-value:hover {
+    border: var(--size-border) solid var(--color-accent-hover);
+}

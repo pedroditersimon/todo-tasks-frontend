@@ -5,16 +5,28 @@ import star_filled_icon from "../../assets/images/star_filled.png";
 import check_icon from "../../assets/images/check.png";
 
 import GenericCard from "./GenericCard";
+import { useEffect, useState } from "react";
+import { TodoTask } from "../../api/models";
 
 function TaskCard({ task }) {
+    const [currentTask, setCurrentTask] = useState(task);
+
+    function toggleFavorite() {
+        currentTask.isFavorite = !currentTask.isFavorite;
+        setCurrentTask(TodoTask.fromJSON(currentTask));
+        // TODO: api call
+    }
+
     return (
         <GenericCard
-            title={task.name}
-            primary_icon={star_icon}
-            primary_icon_hover={star_filled_icon}
-            secondary_icon={task.isCompleted? check_icon : null}
+            title={currentTask.name}
+
+            onPrimaryBtn={toggleFavorite}
+            primary_icon={currentTask.isFavorite? star_filled_icon : star_icon}
+
+            secondary_icon={currentTask.isCompleted? check_icon : null}
         >
-            <span className="task-description">{task.description}</span>
+            <span className="task-description">{currentTask.description}</span>
         </GenericCard>
     );
 }

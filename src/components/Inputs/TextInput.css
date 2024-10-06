@@ -1,16 +1,26 @@
 
 .text-input-value {
-    background-color: #FFFFFF;
-    border: 1.5px solid #D9D9D9;
-    border-radius: 8px;
+    background-color: var(--color-background);
+    border-radius: var(--size-radius-border);
 
-    min-height: 6vh;
-    padding: 0.5vh 1vw;
+    padding: var(--size-smaller) var(--size-smaller);
 
     font-size: large;
     font-weight: 400;
+
+    color: var(--color-primary);
 }
 .text-input-value::placeholder {
-    color: #B3B3B3;
+    color: var(--color-secondary-text);
 }
 
+.text-input-value:not(:focus) {
+    border: var(--size-border) solid var(--color-background-hover);
+}
+
+.text-input-value:focus {
+    border: var(--size-border) solid var(--color-accent);
+}
+.text-input-value:hover {
+    border: var(--size-border) solid var(--color-accent-hover);
+}

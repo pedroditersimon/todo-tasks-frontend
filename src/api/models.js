@@ -7,6 +7,7 @@ export class TodoTask {
     name;
     description;
     isCompleted;
+    isFavorite;
 
     static fromJSON(json) {
         const task = new TodoTask();
@@ -18,7 +19,8 @@ export class TodoTask {
             
             name: json.name,
             description: json.description,
-            isCompleted: json.isCompleted
+            isCompleted: json.isCompleted,
+            isFavorite: json.isFavorite
         });
         return task;
     }
@@ -33,6 +35,9 @@ export class TodoGoal {
 
     name;
     description;
+    isCompleted;
+    completedPercent;
+    isFavorite;
     tasks = [];
 
     static fromJSON(json) {
@@ -45,6 +50,9 @@ export class TodoGoal {
             
             name: json.name,
             description: json.description,
+            isCompleted: json.isCompleted,
+            completedPercent: json.completedPercent,
+            isFavorite: json.isFavorite,
             tasks: json.tasks || [] // Assign tasks, default to empty array if not provided
         });
         return goal;

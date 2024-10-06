@@ -3,5 +3,5 @@
     font-size: medium;
     font-weight: 300;
 
-    color: #757575;
+    color: var(--color-secondary-text);
 }

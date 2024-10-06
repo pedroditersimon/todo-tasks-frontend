@@ -1,13 +1,13 @@
 import "./GenericCard.css";
 import IconButton from "../Inputs/IconButton";
+import { useEffect } from "react";
 
-function GenericCard({ title, onClick, primary_callback, primary_icon, primary_icon_hover, secondary_icon, children  }) {
-
+function GenericCard({ title, onClick, onPrimaryBtn, primary_icon, primary_icon_hover, secondary_icon, children  }) {
     return (
         <div onClick={onClick} className="card btn">
             <IconButton
                 className="card-primary-icon"
-                callback={primary_callback}
+                onClick={onPrimaryBtn}
                 icon={primary_icon}
                 icon_hover={primary_icon_hover}
             />

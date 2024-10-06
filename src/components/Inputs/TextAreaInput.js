@@ -4,8 +4,12 @@ import FormField from "../Forms/FormField.js";
 import { useEffect, useState, useRef } from "react";
 
 function TextAreaInput({title, value, onChange, error_msg, placeholder="Value"}) {
-    const [textValue, setTextValue] = useState(value);
+    const [currentValue, setCurrentValue] = useState(value);
     const textareaRef = useRef(null);
+
+    useEffect(() => setCurrentValue(value), [value]);
+
+    useEffect(() => adjustHeight, [currentValue]);
 
     function adjustHeight() {
         const textarea = textareaRef.current;
@@ -13,9 +17,10 @@ function TextAreaInput({title, value, onChange, error_msg, placeholder="Value"})
         textarea.style.height = `${textarea.scrollHeight}px`; // Ajusta la altura al contenido
     };
 
-    useEffect(() => {
-        adjustHeight();
-    }, [textValue]);
+    function onValueChange(event) {
+        setCurrentValue(event.target.value);
+        if (onChange) onChange(event.target.value);
+    }
 
     return (
         <FormField title={title} error_msg={error_msg}>
@@ -23,8 +28,8 @@ function TextAreaInput({title, value, onChange, error_msg, placeholder="Value"})
                 ref={textareaRef}
                 className="text-area-value"
                 placeholder={placeholder}
-                value={textValue}
-                onChange={(e) => {setTextValue(e.target.value);onChange(e);}}
+                value={currentValue}
+                onChange={onValueChange}
             />
         </FormField>
     );

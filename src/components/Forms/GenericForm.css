@@ -3,13 +3,13 @@
     display: flex;
     flex-direction: column;
 
-    gap: 3vh;
+    gap: var(--size-small);
 
-    background-color: #FFFFFF;
-    border: 1.5px solid #D9D9D9;
-    border-radius: 8px;
+    background-color: var(--color-background);
+    border: 1.5px solid var(--color-background-hover);
+    border-radius: var(--size-radius-border);
 
-    padding: 1.5vw 2vw 2vw;
+    padding: calc(1vw + 2vh);
 
     font-size: large;
     font-weight: 400;
@@ -21,6 +21,8 @@
 
     justify-content: space-between;
     align-items: center;
+
+    color: var(--color-primary);
 }
 
 /*
@@ -33,20 +35,36 @@
     display: flex;
     flex-direction: column;
 
-    gap: 2vh;
+    gap: var(--size-small);
 }
 
-.form-btn {
-    color: #F5F5F5;
-    background-color: #2C2C2C;
 
-    padding: 2vh;
+.form-confirm {
+    display: flex;
+    flex-direction: row;
 
-    border-radius: 8px;
+    justify-content: space-evenly;
+    gap: calc(0.5vw + 0.5vh);
 }
 
-.form-btn:hover {
-    background-color: #353535;
+.form-confirm-btn {
+    color: var(--color-secondary);
+    background-color: var(--color-primary);
 
-    border-radius: 8px;
+    padding: var(--size-smaller);
+
+    border-radius: var(--size-radius-border);
+    flex-grow: 1;
+}
+
+.form-confirm-btn:hover {
+    background-color: var(--color-primary-hover);
+
+    border-radius: var(--size-radius-border);
+}
+
+
+.form-confirm-btn.secondary {
+    background-color: var(--color-secondary-hover);
+    flex-grow: 0;
 }
