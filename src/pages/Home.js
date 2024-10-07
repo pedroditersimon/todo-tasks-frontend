@@ -61,14 +61,12 @@ function Home() {
             <SearchBar onChange={searchBar.setValue} />
 
             <ElementList title="Tasks" onAddBtn={() => redirect("/create/task")}>
-                {tasks
-                    .filter(t => searchBar.has(t.name))
+                {tasks.filter(t => searchBar.has(t.name))
                     .map(createTaskCard)}
             </ElementList>
 
             <ElementList title="Goals" onAddBtn={() => redirect("/create/goal")}>
-                {goals
-                    .filter(g => searchBar.has(g.name))
+                {goals.filter(g => searchBar.has(g.name))
                     .map(createGoalCard)}
             </ElementList>
 

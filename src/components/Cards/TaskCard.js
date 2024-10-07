@@ -12,6 +12,8 @@ import ApiClientService from "../../services/api/ApiClientService";
 function TaskCard({ task, onClick }) {
     const [currentTask, setCurrentTask] = useState(task);
 
+    useEffect(() => setCurrentTask(task), [task]);
+
     async function toggleFavorite() {
         const apiClientService = new ApiClientService(); // change this for a singleton
         currentTask.isFavorite = !currentTask.isFavorite;
