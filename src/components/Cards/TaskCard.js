@@ -6,7 +6,7 @@ import check_icon from "../../assets/images/check.png";
 
 import GenericCard from "./GenericCard";
 import { useEffect, useState } from "react";
-import { TodoTask } from "../../api/models";
+import { TodoTask } from "../../services/api/models";
 
 function TaskCard({ task }) {
     const [currentTask, setCurrentTask] = useState(task);

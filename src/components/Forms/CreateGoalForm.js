@@ -3,8 +3,8 @@ import GenericForm from "./GenericForm";
 import TextInput from "../Inputs/TextInput";
 import TextAreaInput from "../Inputs/TextAreaInput";
 import ListField from "../Inputs/ListField";
-import { TodoGoal } from "../../api/models";
-import ApiClientService from "../../api/services/ApiClientService";
+import { TodoGoal } from "../../services/api/models";
+import ApiClientService from "../../services/api/ApiClientService";
 import { useState } from "react";
 
 function CreateGoalForm({ goal }) {

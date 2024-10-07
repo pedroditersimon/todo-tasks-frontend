@@ -11,8 +11,8 @@ import TextAreaInput from "../Inputs/TextAreaInput";
 import SwitchField from "../Inputs/SwitchField";
 import { useEffect, useState } from "react";
 
-import ApiClientService from "../../api/services/ApiClientService";
-import { TodoTask } from "../../api/models";
+import ApiClientService from "../../services/api/ApiClientService";
+import { TodoTask } from "../../services/api/models";
 
 
 function EditTaskForm({ task }) {

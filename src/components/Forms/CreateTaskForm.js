@@ -2,8 +2,8 @@
 import GenericForm from "./GenericForm";
 import TextInput from "../Inputs/TextInput";
 import TextAreaInput from "../Inputs/TextAreaInput";
-import ApiClientService from "../../api/services/ApiClientService";
-import { TodoTask } from "../../api/models";
+import ApiClientService from "../../services/api/ApiClientService";
+import { TodoTask } from "../../services/api/models";
 
 import { useContext, useState } from "react";
 

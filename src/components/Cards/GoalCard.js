@@ -7,7 +7,7 @@ import check_icon from "../../assets/images/check.png";
 import ProgressBar from "../ProgressBar";
 
 import GenericCard from "./GenericCard";
-import { TodoGoal } from "../../api/models";
+import { TodoGoal } from "../../services/api/models";
 import { useState } from "react";
 
 function GoalCard({ goal }) {

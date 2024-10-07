@@ -1,8 +1,8 @@
-import ApiClientService from "../api/services/ApiClientService";
+import ApiClientService from "../services/api/ApiClientService";
 import PageLayout from "../layouts/PageLayout";
 
 import { useEffect, useState } from "react";
-import { TodoGoal, TodoTask } from "../api/models";
+import { TodoGoal, TodoTask } from "../services/api/models";
 import TaskCard from "../components/Cards/TaskCard";
 import GoalCard from "../components/Cards/GoalCard";
 

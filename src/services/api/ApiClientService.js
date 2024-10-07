@@ -1,6 +1,6 @@
 import HttpClient from "./HttpClient";
 
-import { TodoGoal, TodoTask } from "../models";
+import { TodoGoal, TodoTask } from "./models";
 
 class ApiClientService {
     httpClient = new HttpClient("http://localhost:5143/");
