@@ -7,7 +7,7 @@ import { TodoTask } from "../../services/api/models";
 
 import { useContext, useState } from "react";
 
-function CreateTaskForm({ task }) {
+function CreateTaskForm({ task, onCancel }) {
     const [currentTask, setCurrentTask] = useState(task || {});
 
     async function createTask() {
@@ -26,7 +26,12 @@ function CreateTaskForm({ task }) {
     }
 
     return (
-        <GenericForm title="New task" confirm_text="Create" onConfirm={createTask} >
+        <GenericForm
+            title="New task"
+            confirm_text="Create"
+            onConfirm={createTask}
+            onHeaderSecondaryBtn={onCancel}
+        >
             <TextInput title="Name" value={currentTask.name} onChange={setName} />
             <TextAreaInput title="Description" value={currentTask.description} onChange={setDescription} />
         </GenericForm>

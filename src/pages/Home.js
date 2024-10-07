@@ -20,12 +20,13 @@ import EditGoalForm from "../components/Forms/EditGoalForm";
 
 import SelectableCard from "../components/Cards/SelectableCard";
 
-function Home() {
-    const [tasks, setTasks] = useState([TodoTask.fromJSON({name:"Titulo ola", description:"Description description", isCompleted:true})]);
-    const [goals, setGoals] = useState([TodoGoal.fromJSON({name:"Titulo ola", description:"Description description", isCompleted:true,completedPercent:50})]);
+import { useNavigate } from "react-router-dom";
 
-    console.log(tasks);
-    console.log(goals);
+function Home() {
+    const navigate = useNavigate();
+
+    const [tasks, setTasks] = useState([]);
+    const [goals, setGoals] = useState([]);
 
     useEffect(() => {
         const apiClientService = new ApiClientService();
@@ -38,26 +39,22 @@ function Home() {
             .then(gs => setGoals(gs));
     }, []);
 
+    function redirect(url, state = null, replace = false) {
+        navigate(url, {
+            state: state,
+            replace: replace
+        });
+    }
+
     return (
         <PageLayout>
-            <ElementList title="Tasks">
-                {tasks.map(t => <TaskCard task={t} />)}
+            <ElementList title="Tasks" onAddBtn={() => redirect("/create/task")}>
+                {tasks.map(t => <TaskCard task={t} onClick={()=> redirect("/edit/task", {task:t})} />)}
             </ElementList>
             <br /><br />
-            <ElementList title="Goals">
-                {goals.map(g => <GoalCard goal={g} />)}
+            <ElementList title="Goals" onAddBtn={() => redirect("/create/goal")}>
+                {goals.map(g => <GoalCard goal={g} onClick={()=> redirect("/edit/goal", {goal:g})} />)}
             </ElementList>
-            
-            <br /><br />
-            <CreateTaskForm  />
-            <br /><br />
-            <EditTaskForm task={tasks[Math.floor(Math.random() * tasks.length)] || undefined} />
-            <br /><br />
-            <CreateGoalForm />
-            <br /><br />
-            <EditGoalForm goal={goals[Math.floor(Math.random() * goals.length)] || undefined} />
-            <br /><br />
-            <SelectListForm title="Goals" items={goals.map(g => ListItem.FromTodoGoal(g))} />
         </PageLayout>
     );
 }

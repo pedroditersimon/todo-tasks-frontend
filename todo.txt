@@ -1,3 +1,5 @@
 Todo:
 - Agregar paginacion
-- Usar REM y EM para todos los tamaños
+
+Done:
+- Usar REM y EM para tamaños de textos

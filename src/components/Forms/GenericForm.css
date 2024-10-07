@@ -44,6 +44,7 @@
     flex-direction: row;
 
     justify-content: space-evenly;
+    text-align: center;
     gap: calc(0.5vw + 0.5vh);
 }
 

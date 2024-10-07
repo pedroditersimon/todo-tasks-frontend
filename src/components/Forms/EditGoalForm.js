@@ -11,7 +11,7 @@ import ApiClientService from "../../services/api/ApiClientService";
 import { TodoGoal } from "../../services/api/models";
 import { useState, useEffect } from "react";
 
-function EditGoalForm({ goal }) {
+function EditGoalForm({ goal, onChange, onTaskListClick, items_preview_text, onCancel }) {
     const [currentGoal, setCurrentGoal] = useState(goal || {});
 
     useEffect(() => setCurrentGoal(goal || {}), [goal]);
@@ -23,17 +23,26 @@ function EditGoalForm({ goal }) {
 
     function setName(value) {
         currentGoal.name = value;
-        setCurrentGoal(TodoGoal.fromJSON(currentGoal));
+        const newGoal = TodoGoal.fromJSON(currentGoal);
+
+        setCurrentGoal(newGoal);
+        if (onChange) onChange(newGoal);
     }
 
     function setDescription(value) {
         currentGoal.description = value;
-        setCurrentGoal(TodoGoal.fromJSON(currentGoal));
+        const newGoal = TodoGoal.fromJSON(currentGoal);
+
+        setCurrentGoal(newGoal);
+        if (onChange) onChange(newGoal);
     }
 
     function setFavorite() {
         currentGoal.isFavorite = !currentGoal.isFavorite;
-        setCurrentGoal(TodoGoal.fromJSON(currentGoal));
+        const newGoal = TodoGoal.fromJSON(currentGoal);
+
+        setCurrentGoal(newGoal);
+        if (onChange) onChange(newGoal);
     }
 
     return (
@@ -49,10 +58,12 @@ function EditGoalForm({ goal }) {
 
             onHeaderPrimaryBtn={setFavorite}
             header_primary_icon={currentGoal.isFavorite?star_filled_icon:star_icon}
+
+            onHeaderSecondaryBtn={onCancel}
         >
             <TextInput title="Name" value={currentGoal.name} onChange={setName} />
             <TextAreaInput title="Description" value={currentGoal.description} onChange={setDescription} />
-            <ListField title="Tasks">Item 1, Item 2</ListField>
+            <ListField title="Tasks" onClick={onTaskListClick} >{items_preview_text}</ListField>
         </GenericForm>
     );
 }

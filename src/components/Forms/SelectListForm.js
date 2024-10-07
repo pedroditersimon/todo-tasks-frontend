@@ -25,17 +25,22 @@ class ListItem
     static FromTodoGoal(goal, isSelected=false) {
         return new ListItem(goal.id, goal.name, goal.description, isSelected);
     }
+
+    static IsItemSelected(items, id) {
+        if (items === undefined) return false;
+        const item = items.find(i => i.id === id);
+        return item ? item.isSelected : false;
+    }
 }
 
-function SelectListForm({ title="Items", items, onConfirm }) {
-    const [listItems, setListItems] = useState(items);
-
-    // update listItems when items is modified
-    useEffect(() => setListItems(items), [items]);
+function SelectListForm({ title="Items", items, onConfirm, onCancel }) {
+    const [listItems, setListItems] = useState(items || []);
 
     function onItemToggle(item, isSelected) {
-        item.isSelected = isSelected;
-        setListItems(listItems);
+        const updatedItems = listItems.map(i => 
+            i.id === item.id ? {...i, isSelected} : i
+        );
+        setListItems(updatedItems);
     }
 
     function onFormConfirm() {
@@ -43,7 +48,12 @@ function SelectListForm({ title="Items", items, onConfirm }) {
     }
 
     return (
-        <GenericForm title={title} confirm_text="Select" onConfirm={onFormConfirm} >
+        <GenericForm
+            title={title}
+            confirm_text="Select"
+            onConfirm={onFormConfirm}
+            onHeaderSecondaryBtn={onCancel}
+        >
             {listItems.map(item =>
                 <SelectableCard
                     title={item.title}

@@ -15,7 +15,7 @@ import ApiClientService from "../../services/api/ApiClientService";
 import { TodoTask } from "../../services/api/models";
 
 
-function EditTaskForm({ task }) {
+function EditTaskForm({ task, onCancel }) {
     const [currentTask, setCurrentTask] = useState(task || {});
 
     useEffect(() => setCurrentTask(task || {}), [task]);
@@ -58,6 +58,8 @@ function EditTaskForm({ task }) {
 
             onHeaderPrimaryBtn={setFavorite}
             header_primary_icon={currentTask.isFavorite? star_filled_icon : star_icon}
+
+            onHeaderSecondaryBtn={onCancel}
         >
             <TextInput title="Name" value={currentTask.name} onChange={setName} />
             <TextAreaInput title="Description" value={currentTask.description} onChange={setDescription} />

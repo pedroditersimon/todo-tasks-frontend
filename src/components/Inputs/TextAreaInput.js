@@ -13,6 +13,7 @@ function TextAreaInput({title, value, onChange, error_msg, placeholder="Value"})
 
     function adjustHeight() {
         const textarea = textareaRef.current;
+        if (!textarea) return;
         textarea.style.height = "auto"; // Resetea la altura
         textarea.style.height = `${textarea.scrollHeight}px`; // Ajusta la altura al contenido
     };

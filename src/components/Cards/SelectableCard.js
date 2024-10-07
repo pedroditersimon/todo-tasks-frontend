@@ -11,9 +11,10 @@ function SelectableCard({ title, description, value=false, onToggle }) {
     const [isSelected, setIsSelected] = useState(value);
     
     function toggleSelect() {
-        setIsSelected((prevSelected) => !prevSelected);
-
-        if (onToggle) onToggle(isSelected);
+        setIsSelected((prevSelected) => {
+            if (onToggle) onToggle(!prevSelected);
+            return !prevSelected;
+        });
     }
     
     return (

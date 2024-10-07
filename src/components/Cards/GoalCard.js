@@ -10,7 +10,7 @@ import GenericCard from "./GenericCard";
 import { TodoGoal } from "../../services/api/models";
 import { useState } from "react";
 
-function GoalCard({ goal }) {
+function GoalCard({ goal, onClick }) {
     const [currentGoal, setCurrentGoal] = useState(goal);
 
     function toggleFavorite() {
@@ -27,6 +27,8 @@ function GoalCard({ goal }) {
             primary_icon={currentGoal.isFavorite? star_filled_icon : star_icon}
 
             secondary_icon={currentGoal.isCompleted? check_icon : null}
+
+            onClick={onClick}
         >
             <ProgressBar value={currentGoal.completedPercent} />
         </GenericCard>

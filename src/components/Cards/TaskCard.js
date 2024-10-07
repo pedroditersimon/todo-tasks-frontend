@@ -8,7 +8,7 @@ import GenericCard from "./GenericCard";
 import { useEffect, useState } from "react";
 import { TodoTask } from "../../services/api/models";
 
-function TaskCard({ task }) {
+function TaskCard({ task, onClick }) {
     const [currentTask, setCurrentTask] = useState(task);
 
     function toggleFavorite() {
@@ -25,6 +25,7 @@ function TaskCard({ task }) {
             primary_icon={currentTask.isFavorite? star_filled_icon : star_icon}
 
             secondary_icon={currentTask.isCompleted? check_icon : null}
+            onClick={onClick}
         >
             <span className="task-description">{currentTask.description}</span>
         </GenericCard>

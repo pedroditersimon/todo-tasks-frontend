@@ -5,9 +5,9 @@ import TextAreaInput from "../Inputs/TextAreaInput";
 import ListField from "../Inputs/ListField";
 import { TodoGoal } from "../../services/api/models";
 import ApiClientService from "../../services/api/ApiClientService";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 
-function CreateGoalForm({ goal }) {
+function CreateGoalForm({ goal, onChange, onTaskListClick, items_preview_text, onCancel }) {
     const [currentGoal, setCurrentGoal] = useState(goal || {});
 
     async function createGoal() {
@@ -17,19 +17,30 @@ function CreateGoalForm({ goal }) {
 
     function setName(value) {
         currentGoal.name = value;
-        setCurrentGoal(TodoGoal.fromJSON(currentGoal));
+        const newGoal = TodoGoal.fromJSON(currentGoal);
+
+        setCurrentGoal(newGoal);
+        if (onChange) onChange(newGoal);
     }
 
     function setDescription(value) {
         currentGoal.description = value;
-        setCurrentGoal(TodoGoal.fromJSON(currentGoal));
+        const newGoal = TodoGoal.fromJSON(currentGoal);
+        
+        setCurrentGoal(newGoal);
+        if (onChange) onChange(newGoal);
     }
 
     return (
-        <GenericForm title="New goal" confirm_text="Create" onConfirm={createGoal} >
+        <GenericForm
+            title="New goal"
+            confirm_text="Create"
+            onConfirm={createGoal}
+            onHeaderSecondaryBtn={onCancel}
+        >
             <TextInput title="Name" value={currentGoal.name} onChange={setName} />
             <TextAreaInput title="Description" value={currentGoal.description} onChange={setDescription} />
-            <ListField title="Tasks">Item 1, Item 2</ListField>
+            <ListField title="Tasks" onClick={onTaskListClick}>{items_preview_text}</ListField>
         </GenericForm>
     );
 }

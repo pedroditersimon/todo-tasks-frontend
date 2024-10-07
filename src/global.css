@@ -18,7 +18,7 @@
     --color-accent: #007AFF;
     --color-accent-hover:#086cd6;
 
-    --color-warning: #ed4337;
+    --color-warning: #ff6b6b;
 
     /* this define EM and REM size */
     font-size: calc(1vh + 1.1vw); 
