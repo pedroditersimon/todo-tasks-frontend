@@ -9,7 +9,7 @@ function ListField({title, error_msg, onClick, children}) {
         <FormField title={title} error_msg={error_msg} >
             <div className="list-field-value" onClick={onClick}>
                 <span>{children}</span>
-                <IconButton icon={edit_icon} />
+                <IconButton icon={edit_icon} onClick={onClick} />
             </div>
         </FormField>
     );

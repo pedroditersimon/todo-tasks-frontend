@@ -8,10 +8,15 @@ function IconButton({ onClick, className, icon, icon_hover }) {
     // update currentIcon when icon is modified
     useEffect(() => setCurrentIcon(icon), [icon]);
 
+    function handleClickEvent(event) {
+        event.stopPropagation();
+        if (onClick) onClick();
+    }
+
     return (
         <div
             className={`btn icon-button ${className}`}
-            onClick={onClick}
+            onClick={handleClickEvent}
             onMouseLeave={() => setCurrentIcon(icon)}
             onMouseEnter={() => setCurrentIcon(icon_hover??icon)}
         >
