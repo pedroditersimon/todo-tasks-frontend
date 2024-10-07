@@ -1,5 +1,6 @@
 Todo:
 - Agregar paginacion
+- Agregar barra de busqeuda
 
 Done:
 - Usar REM y EM para tamaños de textos

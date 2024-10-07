@@ -6,7 +6,7 @@ function Separator() {
                 'backgroundColor': 'var(--color-background-hover)',
                 'width': '100%',
                 'margin': 'auto',
-                'height': '0.25vh'
+                'height': 'var(--size-tiny)'
             }}
         />
     );

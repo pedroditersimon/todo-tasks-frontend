@@ -8,14 +8,19 @@
     border-radius: var(--size-radius-border);
 */
 
-    padding: 3vw;
+    padding: var(--size-smaller);
+    
+    display: flex;
+    flex-direction: column;
+    justify-content: start;
+    gap: var(--size-small);
 }
 
 
 @media only screen and (min-width: 1024px) 
 {
     .layout {
-        max-width: 325px;
+        max-width: 350px;
         margin: auto;
     }
 }

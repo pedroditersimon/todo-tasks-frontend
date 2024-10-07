@@ -21,10 +21,12 @@ import EditGoalForm from "../components/Forms/EditGoalForm";
 import SelectableCard from "../components/Cards/SelectableCard";
 
 import { useNavigate } from "react-router-dom";
+import SearchBar from "../components/Inputs/SearchBar";
+import { useSearchBar } from "../hooks/useSearchBar";
 
 function Home() {
     const navigate = useNavigate();
-
+    const searchBar = useSearchBar();
     const [tasks, setTasks] = useState([]);
     const [goals, setGoals] = useState([]);
 
@@ -46,15 +48,30 @@ function Home() {
         });
     }
 
+    function createTaskCard(t) {
+        return <TaskCard task={t} onClick={()=> redirect("/edit/task", {task:t})} />
+    }
+
+    function createGoalCard(g) {
+        return <GoalCard goal={g} onClick={()=> redirect("/edit/goal", {goal:g})} />
+    }
+
     return (
         <PageLayout>
+            <SearchBar onChange={searchBar.setValue} />
+
             <ElementList title="Tasks" onAddBtn={() => redirect("/create/task")}>
-                {tasks.map(t => <TaskCard task={t} onClick={()=> redirect("/edit/task", {task:t})} />)}
+                {tasks
+                    .filter(t => searchBar.has(t.name))
+                    .map(createTaskCard)}
             </ElementList>
-            <br /><br />
+
             <ElementList title="Goals" onAddBtn={() => redirect("/create/goal")}>
-                {goals.map(g => <GoalCard goal={g} onClick={()=> redirect("/edit/goal", {goal:g})} />)}
+                {goals
+                    .filter(g => searchBar.has(g.name))
+                    .map(createGoalCard)}
             </ElementList>
+
         </PageLayout>
     );
 }

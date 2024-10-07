@@ -3,6 +3,8 @@ import GenericForm from "./GenericForm";
 import SelectableCard from "../Cards/SelectableCard";
 
 import { useState, useContext, useEffect } from "react";
+import SearchBar from "../Inputs/SearchBar";
+import { useSearchBar } from "../../hooks/useSearchBar";
 
 class ListItem 
 {
@@ -35,6 +37,7 @@ class ListItem
 
 function SelectListForm({ title="Items", items, onConfirm, onCancel }) {
     const [listItems, setListItems] = useState(items || []);
+    const searchBar = useSearchBar();
 
     function onItemToggle(item, isSelected) {
         const updatedItems = listItems.map(i => 
@@ -54,14 +57,18 @@ function SelectListForm({ title="Items", items, onConfirm, onCancel }) {
             onConfirm={onFormConfirm}
             onHeaderSecondaryBtn={onCancel}
         >
-            {listItems.map(item =>
-                <SelectableCard
-                    title={item.title}
-                    description={item.description}
-                    value={item.isSelected}
-                    onToggle={(isSelected) => onItemToggle(item, isSelected)}
-                />
-            )}
+            <SearchBar onChange={searchBar.setValue} />
+            {listItems
+                .filter(item => searchBar.has(item.title))
+                .map(item =>
+                    <SelectableCard
+                        title={item.title}
+                        description={item.description}
+                        value={item.isSelected}
+                        onToggle={(isSelected) => onItemToggle(item, isSelected)}
+                    />
+                )
+            }
         </GenericForm>
     );
 }

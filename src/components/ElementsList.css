@@ -17,8 +17,8 @@
 .element-list-header-title {
     margin: 0 auto;
     color: var(--color-secondary-text);
-    font-size: large;
-    font-weight: 500;
+    font-size: medium;
+    font-weight: 400;
 }
 
 .element-list-body, .element-list-header {

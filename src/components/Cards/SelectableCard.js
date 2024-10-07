@@ -10,6 +10,8 @@ import "./SelectableCard.css";
 function SelectableCard({ title, description, value=false, onToggle }) {
     const [isSelected, setIsSelected] = useState(value);
     
+    useEffect(() => setIsSelected(value), [value]);
+
     function toggleSelect() {
         setIsSelected((prevSelected) => {
             if (onToggle) onToggle(!prevSelected);

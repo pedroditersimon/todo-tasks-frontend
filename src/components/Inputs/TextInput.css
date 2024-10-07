@@ -9,18 +9,19 @@
     font-weight: 400;
 
     color: var(--color-primary);
+    border: var(--size-border) solid var(--color-background-hover);
 }
 .text-input-value::placeholder {
     color: var(--color-secondary-text);
 }
 
-.text-input-value:not(:focus) {
-    border: var(--size-border) solid var(--color-background-hover);
-}
 
 .text-input-value:focus {
-    border: var(--size-border) solid var(--color-accent);
+    border: var(--size-border) solid var(--color-primary);
+    outline: none;
+    box-shadow: none;
 }
 .text-input-value:hover {
     border: var(--size-border) solid var(--color-accent-hover);
 }
+

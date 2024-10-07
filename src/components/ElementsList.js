@@ -3,6 +3,7 @@ import "./ElementsList.css";
 
 import Separator from "./Separator";
 import IconButton from "./Inputs/IconButton";
+import { useEffect } from "react";
 
 function ElementList({ title, onAddBtn, children}) {
     return (
@@ -12,7 +13,6 @@ function ElementList({ title, onAddBtn, children}) {
                 <IconButton onClick={onAddBtn} icon={plus_icon} />
             </div>
             <Separator />
-            
             {children}
         </div>
     );
