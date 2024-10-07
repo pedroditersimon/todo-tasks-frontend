@@ -7,12 +7,13 @@ import { TodoTask } from "../../services/api/models";
 
 import { useContext, useState } from "react";
 
-function CreateTaskForm({ task, onCancel }) {
+function CreateTaskForm({ task, onCancel, onConfirm }) {
     const [currentTask, setCurrentTask] = useState(task || {});
 
     async function createTask() {
         const apiClientService = new ApiClientService(); // change this for a singleton
-        //await apiClientService.createTask(currentTask);
+        const createdTask = await apiClientService.createTask(currentTask);
+        if (onConfirm) onConfirm(createdTask);
     }
 
     function setName(value) {

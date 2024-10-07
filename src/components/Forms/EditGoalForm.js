@@ -11,14 +11,21 @@ import ApiClientService from "../../services/api/ApiClientService";
 import { TodoGoal } from "../../services/api/models";
 import { useState, useEffect } from "react";
 
-function EditGoalForm({ goal, onChange, onTaskListClick, items_preview_text, onCancel }) {
+function EditGoalForm({ goal, onChange, onTaskListClick, items_preview_text, onCancel, onConfirm, onDelete }) {
     const [currentGoal, setCurrentGoal] = useState(goal || {});
 
     useEffect(() => setCurrentGoal(goal || {}), [goal]);
 
     async function updateGoal() {
         const apiClientService = new ApiClientService(); // change this for a singleton
-        //await apiClientService.updateGoal(currentGoal);
+        const updatedGoal = await apiClientService.updateGoal(currentGoal);
+        if (onConfirm) onConfirm(updatedGoal);
+    }
+
+    async function deleteGoal() {
+        const apiClientService = new ApiClientService(); // change this for a singleton
+        const success = await apiClientService.deleteGoal(currentGoal.id);
+        if (success && onDelete) onDelete();
     }
 
     function setName(value) {
@@ -49,7 +56,7 @@ function EditGoalForm({ goal, onChange, onTaskListClick, items_preview_text, onC
         <GenericForm 
             title="Edit goal"
 
-            onSecondaryConfirm={null}
+            onSecondaryConfirm={deleteGoal}
             secondary_confirm_icon={trash_icon}
             secondary_confirm_icon_hover={trash_red_icon}
 

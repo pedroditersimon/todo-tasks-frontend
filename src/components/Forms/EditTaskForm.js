@@ -15,14 +15,22 @@ import ApiClientService from "../../services/api/ApiClientService";
 import { TodoTask } from "../../services/api/models";
 
 
-function EditTaskForm({ task, onCancel }) {
+function EditTaskForm({ task, onConfirm, onCancel, onDelete }) {
     const [currentTask, setCurrentTask] = useState(task || {});
 
     useEffect(() => setCurrentTask(task || {}), [task]);
 
     async function updateTask() {
         const apiClientService = new ApiClientService(); // change this for a singleton
-        //await apiClientService.updateTask(currentTask);
+        const updatedTask = await apiClientService.updateTask(currentTask);
+        console.log("onConfirm");
+        if (onConfirm) onConfirm(updatedTask);
+    }
+
+    async function deleteTask() {
+        const apiClientService = new ApiClientService(); // change this for a singleton
+        const success = await apiClientService.deleteTask(currentTask.id);
+        if (success && onDelete) onDelete();
     }
 
     function setName(value) {
@@ -49,11 +57,11 @@ function EditTaskForm({ task, onCancel }) {
         <GenericForm
             title="Edit task"
 
-            onSecondaryConfirm={null}
+            onSecondaryConfirm={deleteTask}
             secondary_confirm_icon={trash_icon}
             secondary_confirm_icon_hover={trash_red_icon}
 
-            onChange={updateTask}
+            onConfirm={updateTask}
             confirm_text="Save"
 
             onHeaderPrimaryBtn={setFavorite}

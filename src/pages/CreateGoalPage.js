@@ -29,6 +29,7 @@ function CreateGoalPage() {
                 goal={currentGoal}
                 onChange={setCurrentGoal}
                 onCancel={() => navigate(-1)}
+                onConfirm={(g) => navigate(-1)}
 
                 items_preview_text={listPage.getSelectedTitles()}
                 onTaskListClick={listPage.open}

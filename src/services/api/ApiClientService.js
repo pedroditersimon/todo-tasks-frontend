@@ -50,9 +50,10 @@ class ApiClientService {
 
     async deleteTask(id) {
         const response = await this.httpClient.delete(`tasks/${id}`);
-        if (response.status === 204) return;
+        if (response.status === 204) return true;
         if (response.status === 404) throw new Error("404 Not Found");
         if (response.status === 409) throw new Error("409 Conflict");
+        return true;
     }
 
 
@@ -119,9 +120,10 @@ class ApiClientService {
 
     async deleteGoal(id) {
         const response = await this.httpClient.delete(`goals/${id}`);
-        if (response.status === 204) return;
+        if (response.status === 204) return true;
         if (response.status === 404) throw new Error("404 Not Found");
         if (response.status === 409) throw new Error("409 Conflict");
+        return true;
     }
 }
 

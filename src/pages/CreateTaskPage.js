@@ -14,7 +14,11 @@ function CreateTaskPage() {
 
     return (
         <PageLayout>
-            <CreateTaskForm task={task} onCancel={() => navigate(-1)} />
+            <CreateTaskForm
+                task={task}
+                onCancel={() => navigate(-1)} 
+                onConfirm={(t) => navigate(-1)}
+            />
         </PageLayout>
     );
 }

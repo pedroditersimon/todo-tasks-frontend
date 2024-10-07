@@ -18,7 +18,8 @@ function useSelectListPage(title, comebackState) {
                 items: items,
                 comebackPath: location.pathname,
                 comebackState: comebackState
-            }
+            },
+            replace: true
         });
     };
 

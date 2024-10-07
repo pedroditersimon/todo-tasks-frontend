@@ -27,7 +27,7 @@ function SelectListPage({}) {
                 title={title}
                 items={items}
                 onConfirm={onConfirm}
-                onCancel={() => navigate(-1)}
+                onCancel={() => onConfirm(items)} // Confirm with given items
             />
         </PageLayout>
     );

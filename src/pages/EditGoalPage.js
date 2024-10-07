@@ -29,6 +29,8 @@ function EditGoalPage({onCancel}) {
                 goal={goal}
                 onChange={setCurrentGoal}
                 onCancel={() => navigate(-1)}
+                onConfirm={(g) => navigate(-1)}
+                onDelete={() => navigate(-1)}
 
                 items_preview_text={listPage.getSelectedTitles()}
                 onTaskListClick={listPage.open}

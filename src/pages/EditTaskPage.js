@@ -12,7 +12,12 @@ function EditTaskPage() {
 
     return (
         <PageLayout>
-            <EditTaskForm task={task} onCancel={() => navigate(-1)} />
+            <EditTaskForm
+                task={task}
+                onCancel={() => navigate(-1)}
+                onConfirm={(t) => navigate(-1)}
+                onDelete={() => navigate(-1)}
+            />
         </PageLayout>
     );
 }
