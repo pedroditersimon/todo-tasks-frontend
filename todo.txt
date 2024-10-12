@@ -1,6 +1,12 @@
 Todo:
+- Escribir el readme
 - Agregar paginacion
 - Agregar barra de busqeuda
+- Agregar animaciones
+- Implementar una cache de uso global para no recuperar de los fetchs muchas veces
+- Implementar un singleton de ApiClient
 
 Done:
 - Usar REM y EM para tamaños de textos
+- Actualizar los fetchs del apiclient
+- Acortar nombres preview de list field

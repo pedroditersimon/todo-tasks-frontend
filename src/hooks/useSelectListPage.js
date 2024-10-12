@@ -23,18 +23,25 @@ function useSelectListPage(title, comebackState) {
         });
     };
 
-    function getSelectedTitles() {
+    function getSelectedItems() {
         if (items === undefined)
-            return 'Select';
+            return [];
 
-        const selectedItems = items.filter(i => i.isSelected);
-        if (selectedItems.length === 0)
-            return 'Select';
-
-        return selectedItems.map(i => i.title).join(', ');
+        return items.filter(i => i.isSelected);
     };
 
-    return { items, setInitialItems, open, getSelectedTitles };
+    function getSelectedTitles() {
+        return getSelectedItems().map(item => item.title);
+    }
+    
+
+    function isItemSelected(id) {
+        if (items === undefined) return false;
+        const item = items.find(i => i.id === id);
+        return item ? item.isSelected : false;
+    }
+
+    return { items, setInitialItems, open, getSelectedItems, getSelectedTitles, isItemSelected };
 };
 
 export { useSelectListPage };

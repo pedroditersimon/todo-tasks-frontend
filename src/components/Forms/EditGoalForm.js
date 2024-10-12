@@ -70,7 +70,7 @@ function EditGoalForm({ goal, onChange, onTaskListClick, items_preview_text, onC
         >
             <TextInput title="Name" value={currentGoal.name} onChange={setName} />
             <TextAreaInput title="Description" value={currentGoal.description} onChange={setDescription} />
-            <ListField title="Tasks" onClick={onTaskListClick} >{items_preview_text}</ListField>
+            <ListField title="Tasks" onClick={onTaskListClick} texts={items_preview_text} />
         </GenericForm>
     );
 }

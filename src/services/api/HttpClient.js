@@ -12,8 +12,9 @@ class HttpClient {
             return await response.json();
         } catch (error) {
             console.error('Error fetching data:', error);
-            throw error; // Rethrow to handle it elsewhere if needed
+            //throw error; // Rethrow to handle it elsewhere if needed
         }
+        return null;
     }
 
     async post(endpoint, body) {
@@ -31,8 +32,9 @@ class HttpClient {
             return await response.json();
         } catch (error) {
             console.error('Error posting data:', error);
-            throw error;
+            //throw error;
         }
+        return null;
     }
 
     async put(endpoint, body) {
@@ -50,8 +52,9 @@ class HttpClient {
             return await response.json();
         } catch (error) {
             console.error('Error updating data:', error);
-            throw error;
+            //throw error;
         }
+        return null;
     }
 
     async delete(endpoint) {
@@ -59,14 +62,12 @@ class HttpClient {
             const response = await fetch(`${this.baseURL}${endpoint}`, {
                 method: 'DELETE'
             });
-            if (!response.ok) {
-                return null;
-            }
-            return true; // Indicates that the deletion was successful
+            return response.ok; // Indicates that the deletion was successful
         } catch (error) {
             console.error('Error deleting data:', error);
-            throw error;
+            //throw error;
         }
+        return false;
     }
 
     async patch(endpoint) {
@@ -77,11 +78,12 @@ class HttpClient {
             if (!response.ok) {
                 return null;
             }
-            return true; // Indicates that the deletion was successful
+            return await response.json();
         } catch (error) {
             console.error('Error patching data:', error);
-            throw error;
+            //throw error;
         }
+        return null;
     }
 
 }

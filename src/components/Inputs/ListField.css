@@ -20,3 +20,24 @@
     border: var(--size-border) dashed var(--color-accent-hover);
     cursor: pointer;
 }
+
+.list-field-icon {
+    align-self: flex-start;
+}
+
+.list-field-ul {
+    display: flex;           
+    flex-direction: column;     
+    list-style-type: decimal;
+    padding: 0;
+    padding-left: 2%;             
+    margin: 0;
+    width: 85%;
+}
+
+.list-field-ul li {
+    white-space: nowrap;        
+    overflow: hidden;         
+    text-overflow: ellipsis;   
+    width: 100%;
+}

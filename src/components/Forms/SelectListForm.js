@@ -27,12 +27,6 @@ class ListItem
     static FromTodoGoal(goal, isSelected=false) {
         return new ListItem(goal.id, goal.name, goal.description, isSelected);
     }
-
-    static IsItemSelected(items, id) {
-        if (items === undefined) return false;
-        const item = items.find(i => i.id === id);
-        return item ? item.isSelected : false;
-    }
 }
 
 function SelectListForm({ title="Items", items, onConfirm, onCancel }) {

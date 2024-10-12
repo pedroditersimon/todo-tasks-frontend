@@ -12,9 +12,15 @@ class ApiClientService {
         return data.map(t => TodoTask.fromJSON(t));
     }
 
+    async getTasksByGoalID(goalID) {
+        const data = await this.httpClient.get(`tasks/GetAllByGoalID/${goalID}`);
+        if (data == null) return [];
+        return data.map(t => TodoTask.fromJSON(t));
+    }
+
     async getTaskById(id) {
         const data = await this.httpClient.get(`tasks/${id}`);
-        if (data == null) throw new Error("404 Not Found");
+        if (data == null) return null;
         return TodoTask.fromJSON(data);
     }
 
@@ -32,98 +38,84 @@ class ApiClientService {
 
     async createTask(task) {
         const data = await this.httpClient.post("Tasks", task);
-        if (data == null) throw new Error("409 Conflict");
+        if (data == null) return null;
         return TodoTask.fromJSON(data);
     }
 
     async updateTask(task) {
         const data = await this.httpClient.put("tasks", task);
-        if (data == null) throw new Error("404 Not Found");
+        if (data == null) return null;
         return TodoTask.fromJSON(data);
     }
 
     async setTaskCompleted(taskId) {
-        const data = await this.httpClient.put(`tasks/SetCompleted`, { id: taskId });
-        if (data == null) throw new Error("404 Not Found");
+        const data = await this.httpClient.patch(`tasks/SetCompleted`, { id: taskId });
+        if (data == null) return null;
         return TodoTask.fromJSON(data);
     }
 
     async deleteTask(id) {
-        const response = await this.httpClient.delete(`tasks/${id}`);
-        if (response.status === 204) return true;
-        if (response.status === 404) throw new Error("404 Not Found");
-        if (response.status === 409) throw new Error("409 Conflict");
-        return true;
+        return await this.httpClient.delete(`tasks/${id}`);
     }
 
 
     // region Goals
     async getAllGoals() {
-        const data = await this.httpClient.get("goals");
-        if (data == null) return [];
-        return data.map(g => TodoGoal.fromJSON(g));
-    }
-
-    async getAllGoalsWithTasks() {
-        const data = await this.httpClient.get("goals/GetAllWithTasks");
+        const data = await this.httpClient.post("goals/GetAll");
         if (data == null) return [];
         return data.map(g => TodoGoal.fromJSON(g));
     }
 
     async getGoalById(id) {
-        const data = await this.httpClient.get(`goals/${id}`);
-        if (data == null) throw new Error("404 Not Found");
+        const data = await this.httpClient.post(`goals/GetByID/${id}`);
+        if (data == null) return null;
         return TodoGoal.fromJSON(data);
     }
 
-    async getGoalByIdWithTasks(id) {
-        const data = await this.httpClient.get(`goals/GetByIDWithTasks/${id}`);
-        if (data == null) throw new Error("404 Not Found");
-        return TodoGoal.fromJSON(data);
+    async getGoalsByTaskID(taskID) {
+        const data = await this.httpClient.post(`goals/GetAllByTaskID/${taskID}`);
+        if (data == null) return [];
+        return data.map(g => TodoGoal.fromJSON(g));
     }
 
     async getPendingGoals() {
-        const data = await this.httpClient.get("goals/GetPendings");
+        const data = await this.httpClient.post("goals/GetPendings");
         if (data == null) return [];
         return data.map(g => TodoGoal.fromJSON(g));
     }
 
     async getCompletedGoals() {
-        const data = await this.httpClient.get("goals/GetCompleteds");
+        const data = await this.httpClient.post("goals/GetCompleteds");
         if (data == null) return [];
         return data.map(g => TodoGoal.fromJSON(g));
     }
 
     async createGoal(goal) {
-        const data = await this.httpClient.post("goals", goal);
-        if (data == null) throw new Error("409 Conflict");
+        const data = await this.httpClient.post("goals/Create", goal);
+        if (data == null) return null;
         return TodoGoal.fromJSON(data);
     }
 
     async updateGoal(goal) {
-        const data = await this.httpClient.put("goals", goal);
-        if (data == null) throw new Error("404 Not Found");
+        const data = await this.httpClient.put("goals/Update", goal);
+        if (data == null) return null;
         return TodoGoal.fromJSON(data);
     }
 
     async addTaskToGoal(goalId, taskId) {
         const data = await this.httpClient.patch(`goals/AddTask?goalID=${goalId}&taskID=${taskId}`);
-        if (data == null) throw new Error("404 Not Found");
+        if (data == null) return null;
         return TodoGoal.fromJSON(data);
     }
 
-    async removeTaskToGoal(goalId, taskId) {
+    async removeTaskFromGoal(goalId, taskId) {
         const data = await this.httpClient.patch(`goals/RemoveTask?goalID=${goalId}&taskID=${taskId}`);
-        if (data == null) throw new Error("404 Not Found");
+        if (data == null) return null;
         return TodoGoal.fromJSON(data);
     }
 
     async deleteGoal(id) {
-        const response = await this.httpClient.delete(`goals/${id}`);
-        if (response.status === 204) return true;
-        if (response.status === 404) throw new Error("404 Not Found");
-        if (response.status === 409) throw new Error("409 Conflict");
-        return true;
+        return await this.httpClient.delete(`goals/${id}`);
     }
 }
 
