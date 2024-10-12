@@ -3,24 +3,13 @@ Aplicacion frontend web desarrollada en React, diseñada para gestionar un siste
 Este es un proyecto de practica para implementar el desarrollo basico de un sistema frontend en React
 
 
-## Conocimientos adquiridos
-Resumen de los conocimientos nuevos que adquirí y apliqué en el sistema:
-- Estructura MVC en backend.
-- Patrón Repositorio.
-- Patrón UnitOfWork.
-- Migraciones y CodeFirst para la base de datos.
-- Inserción de semillas o datos iniciales en la base de datos.
-- Clases y Interfaces generícas para Repositorios.
-- BaseModel con propiedades heredadas y interacción con clases y interfaces generícas.
-- SoftDelete con QueryFilter.
-- Estructura y organización de una solución y sus proyectos en C#.
-- ConcurrencyCheck con LastUpdatedTime, para evitar sobrescribir un registro que ya se esta editando simultanemante.
-- Propiedades 'Navigators' de EntityFramework.
-- Tests unitarios.
-- Transaction (rollback y commit)
+## API backend
+La aplicacion utiliza una API backend que desarrollé en ASP.Net C#.  
+Repositorio de la api:  
+https://github.com/pedroditersimon/todo-tasks-api
 
-## Links
-Tomé riendas gracias a el [Curso de EntityFramework de NetMentor](https://youtube.com/playlist?list=PLesmOrW3mp4i2RdfsPI5R6o5EVacGuovz&si=kRphA8p3ITI40upE) en Youtube.  
-Y a hechar un vistazo a los repositorios y proyectos de NetMentor en github:
-- https://github.com/ElectNewt/curso-entity-framework
-- https://github.com/ElectNewt/core-driven-architecture
+
+## Mockup
+Mockup de la interfaz en figma
+
+![](./docs/mockup.png)
