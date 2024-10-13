@@ -1,0 +1,6 @@
+.select-list-empty-message {
+    text-align: center;
+    font-size: medium;
+    font-weight: 400;
+    color: var(--color-secondary-text);
+ }

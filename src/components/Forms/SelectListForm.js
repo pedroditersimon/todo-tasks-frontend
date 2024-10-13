@@ -29,7 +29,7 @@ class ListItem
     }
 }
 
-function SelectListForm({ title="Items", items, onConfirm, onCancel }) {
+function SelectListForm({ title="Items", items, empty_message="Sin resultados", onConfirm, onCancel }) {
     const [listItems, setListItems] = useState(items || []);
     const searchBar = useSearchBar();
 
@@ -44,6 +44,21 @@ function SelectListForm({ title="Items", items, onConfirm, onCancel }) {
         if (onConfirm) onConfirm(listItems);
     }
 
+    function createCards() {
+        return listItems
+        .filter(item => searchBar.has(item.title))
+        .map(item =>
+            <SelectableCard
+                title={item.title}
+                description={item.description}
+                value={item.isSelected}
+                onToggle={(isSelected) => onItemToggle(item, isSelected)}
+            />
+        );
+    }
+    const cardItems = createCards();
+    const showEmptyMessage = cardItems.length === 0;
+
     return (
         <GenericForm
             title={title}
@@ -52,16 +67,9 @@ function SelectListForm({ title="Items", items, onConfirm, onCancel }) {
             onHeaderSecondaryBtn={onCancel}
         >
             <SearchBar onChange={searchBar.setValue} />
-            {listItems
-                .filter(item => searchBar.has(item.title))
-                .map(item =>
-                    <SelectableCard
-                        title={item.title}
-                        description={item.description}
-                        value={item.isSelected}
-                        onToggle={(isSelected) => onItemToggle(item, isSelected)}
-                    />
-                )
+            { showEmptyMessage
+                ? <span className="select-list-empty-message">{empty_message}</span>
+                : cardItems
             }
         </GenericForm>
     );

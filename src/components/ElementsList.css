@@ -32,3 +32,11 @@
     gap: 1.5vh;
     margin-top: 2vh;
 }
+
+
+.element-list-empty-message {
+   text-align: center;
+   font-size: medium;
+   font-weight: 400;
+   color: var(--color-secondary-text);
+}

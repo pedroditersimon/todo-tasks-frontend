@@ -37,6 +37,7 @@
 
     --size-border: calc(0.1vw + 0.2vh);
     --size-border-smaller: calc(0.1vw + 0.2vh);
+    
     --size-radius-border: calc(0.1vw + 1vh); 
 }
 
