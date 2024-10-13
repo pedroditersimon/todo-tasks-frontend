@@ -7,7 +7,7 @@ import GenericForm from "./GenericForm";
 import TextInput from "../Inputs/TextInput";
 import TextAreaInput from "../Inputs/TextAreaInput";
 import ListField from "../Inputs/ListField";
-import ApiClientService from "../../services/api/ApiClientService";
+import apiClientService from "../../services/api/ApiClientService";
 import { TodoGoal } from "../../services/api/models";
 import { useState, useEffect } from "react";
 
@@ -17,13 +17,13 @@ function EditGoalForm({ goal, onChange, onTaskListClick, items_preview_text, onC
     useEffect(() => setCurrentGoal(goal || {}), [goal]);
 
     async function updateGoal() {
-        const apiClientService = new ApiClientService(); // change this for a singleton
+        
         const updatedGoal = await apiClientService.updateGoal(currentGoal);
         if (onConfirm) onConfirm(updatedGoal);
     }
 
     async function deleteGoal() {
-        const apiClientService = new ApiClientService(); // change this for a singleton
+        
         const success = await apiClientService.deleteGoal(currentGoal.id);
         if (success && onDelete) onDelete();
     }

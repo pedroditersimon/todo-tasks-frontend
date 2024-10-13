@@ -2,7 +2,7 @@
 import GenericForm from "./GenericForm";
 import TextInput from "../Inputs/TextInput";
 import TextAreaInput from "../Inputs/TextAreaInput";
-import ApiClientService from "../../services/api/ApiClientService";
+import apiClientService from "../../services/api/ApiClientService";
 import { TodoTask } from "../../services/api/models";
 
 import { useContext, useState } from "react";
@@ -11,7 +11,7 @@ function CreateTaskForm({ task, onCancel, onConfirm }) {
     const [currentTask, setCurrentTask] = useState(task || {});
 
     async function createTask() {
-        const apiClientService = new ApiClientService(); // change this for a singleton
+        
         const createdTask = await apiClientService.createTask(currentTask);
         if (onConfirm) onConfirm(createdTask);
     }

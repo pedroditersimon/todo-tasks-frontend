@@ -9,7 +9,7 @@ import ProgressBar from "../ProgressBar";
 import GenericCard from "./GenericCard";
 import { TodoGoal } from "../../services/api/models";
 import { useEffect, useState } from "react";
-import ApiClientService from "../../services/api/ApiClientService";
+import apiClientService from "../../services/api/ApiClientService.js";
 
 function GoalCard({ goal, onClick }) {
     const [currentGoal, setCurrentGoal] = useState(goal);
@@ -17,7 +17,7 @@ function GoalCard({ goal, onClick }) {
     useEffect(() => setCurrentGoal(goal), [goal]);
 
     async function toggleFavorite() {
-        const apiClientService = new ApiClientService(); // change this for a singleton
+        
         currentGoal.isFavorite = !currentGoal.isFavorite;
         const updatedGoal = await apiClientService.updateGoal(currentGoal);
         setCurrentGoal(updatedGoal);

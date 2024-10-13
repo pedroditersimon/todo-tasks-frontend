@@ -7,7 +7,7 @@ import check_icon from "../../assets/images/check.png";
 import GenericCard from "./GenericCard";
 import { useEffect, useState } from "react";
 import { TodoTask } from "../../services/api/models";
-import ApiClientService from "../../services/api/ApiClientService";
+import apiClientService from "../../services/api/ApiClientService";
 
 function TaskCard({ task, onClick }) {
     const [currentTask, setCurrentTask] = useState(task);
@@ -15,7 +15,7 @@ function TaskCard({ task, onClick }) {
     useEffect(() => setCurrentTask(task), [task]);
 
     async function toggleFavorite() {
-        const apiClientService = new ApiClientService(); // change this for a singleton
+        
         currentTask.isFavorite = !currentTask.isFavorite;
         const updatedTask = await apiClientService.updateTask(currentTask);
         setCurrentTask(updatedTask);

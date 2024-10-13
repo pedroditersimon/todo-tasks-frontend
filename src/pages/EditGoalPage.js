@@ -2,7 +2,7 @@ import CreateGoalForm from "../components/Forms/CreateGoalForm";
 import EditGoalForm from "../components/Forms/EditGoalForm";
 import PageLayout from "../layouts/PageLayout";
 import { useNavigate, useLocation } from "react-router-dom";
-import ApiClientService from "../services/api/ApiClientService";
+import apiClientService from "../services/api/ApiClientService.js";
 import { ListItem } from "../components/Forms/SelectListForm";
 import { useState, useEffect } from "react";
 import { useSelectListPage } from "../hooks/useSelectListPage";
@@ -15,7 +15,6 @@ function EditGoalPage({onCancel}) {
     const listPage = useSelectListPage("Tasks", {goal:currentGoal});
 
     async function setInitialItems() {
-        const apiClientService = new ApiClientService(); // hacer esto un singleton
         const tasks = await apiClientService.getAllTasks();
         const goalTasks = await apiClientService.getTasksByGoalID(currentGoal.id);
 
@@ -29,7 +28,7 @@ function EditGoalPage({onCancel}) {
     useEffect(() => setInitialItems, []);
 
     async function handleOnConfirm(confirmedGoal) {
-        const apiClientService = new ApiClientService(); // change this for a singleton
+        
 
         const goalTasks = await apiClientService.getTasksByGoalID(confirmedGoal.id);
 

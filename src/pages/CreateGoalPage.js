@@ -1,7 +1,7 @@
 import { useLocation, useNavigate } from "react-router-dom";
 import CreateGoalForm from "../components/Forms/CreateGoalForm";
 import PageLayout from "../layouts/PageLayout";
-import ApiClientService from "../services/api/ApiClientService";
+import apiClientService from "../services/api/ApiClientService";
 import { ListItem } from "../components/Forms/SelectListForm";
 import { useSelectListPage } from "../hooks/useSelectListPage";
 import { useEffect, useState } from "react";
@@ -15,7 +15,6 @@ function CreateGoalPage() {
     const listPage = useSelectListPage("Tasks", {goal: currentGoal});
     
     async function setInitialItems() {
-        const apiClientService = new ApiClientService(); // hacer esto un singleton
         const tasks = await apiClientService.getAllTasks();
         // create new taskList but keeping the selected state
         const taskList = tasks.map(t => ListItem.FromTodoTask(t, listPage.isItemSelected(t.id))); 
@@ -24,7 +23,7 @@ function CreateGoalPage() {
     useEffect(() => setInitialItems, []);
 
     async function handleOnConfirm(confirmedGoal) {
-        const apiClientService = new ApiClientService(); // change this for a singleton
+        
 
         // add every selected task to the goal
         const selectedItems = listPage.getSelectedItems();

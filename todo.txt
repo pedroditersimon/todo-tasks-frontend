@@ -2,7 +2,6 @@ Todo:
 - Agregar paginacion
 - Agregar animaciones
 - Implementar una cache de uso global para no recuperar de los fetchs muchas veces
-- Implementar un singleton de ApiClient
 - Validar que los campos de los formularios no esten vacios (almenos el de nombre)
 
 Done:
@@ -12,3 +11,4 @@ Done:
 - Agregar barra de busqeuda
 - Escribir el readme
 - Mostar mensaje de "sin resultados" cuando la lista esta vacia
+- Implementar un singleton de ApiClient

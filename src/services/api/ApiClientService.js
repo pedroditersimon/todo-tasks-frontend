@@ -3,7 +3,9 @@ import HttpClient from "./HttpClient";
 import { TodoGoal, TodoTask } from "./models";
 
 class ApiClientService {
-    httpClient = new HttpClient("http://localhost:5143/");
+    constructor(baseURL) {
+        this.httpClient = new HttpClient(baseURL);
+    }
 
     // region Tasks
     async getAllTasks() {
@@ -119,4 +121,6 @@ class ApiClientService {
     }
 }
 
-export default ApiClientService;
+const singleton = new ApiClientService("http://localhost:5143/");
+export default singleton;
+export { ApiClientService };

@@ -1,4 +1,4 @@
-import ApiClientService from "../services/api/ApiClientService";
+import apiClientService from "../services/api/ApiClientService.js";
 import PageLayout from "../layouts/PageLayout";
 
 import { useEffect, useState } from "react";
@@ -31,12 +31,9 @@ function Home() {
     const [goals, setGoals] = useState([]);
 
     useEffect(() => {
-        const apiClientService = new ApiClientService();
-
         apiClientService.getAllTasks()
             .then(ts => setTasks(ts));
         
-        // DONT USE THIS, use getAllGoals() instead
         apiClientService.getAllGoals()
             .then(gs => setGoals(gs));
     }, []);

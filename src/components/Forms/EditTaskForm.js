@@ -11,7 +11,7 @@ import TextAreaInput from "../Inputs/TextAreaInput";
 import SwitchField from "../Inputs/SwitchField";
 import { useEffect, useState } from "react";
 
-import ApiClientService from "../../services/api/ApiClientService";
+import apiClientService from "../../services/api/ApiClientService";
 import { TodoTask } from "../../services/api/models";
 
 
@@ -21,14 +21,14 @@ function EditTaskForm({ task, onConfirm, onCancel, onDelete }) {
     useEffect(() => setCurrentTask(task || {}), [task]);
 
     async function updateTask() {
-        const apiClientService = new ApiClientService(); // change this for a singleton
+        
         const updatedTask = await apiClientService.updateTask(currentTask);
         console.log("onConfirm");
         if (onConfirm) onConfirm(updatedTask);
     }
 
     async function deleteTask() {
-        const apiClientService = new ApiClientService(); // change this for a singleton
+        
         const success = await apiClientService.deleteTask(currentTask.id);
         if (success && onDelete) onDelete();
     }
