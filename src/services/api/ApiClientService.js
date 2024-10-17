@@ -2,8 +2,6 @@ import HttpClient from "./HttpClient";
 
 import { TodoGoal, TodoTask } from "./models";
 
-import dotenv from 'dotenv';
-
 class ApiClientService {
     constructor(baseURL) {
         this.httpClient = new HttpClient(baseURL);
@@ -123,6 +121,6 @@ class ApiClientService {
     }
 }
 
-const singleton = new ApiClientService(process.env.API_URL);
+const singleton = new ApiClientService("https://todo-tasks-api.onrender.com");
 export default singleton;
 export { ApiClientService };
