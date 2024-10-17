@@ -2,6 +2,8 @@ import HttpClient from "./HttpClient";
 
 import { TodoGoal, TodoTask } from "./models";
 
+import dotenv from 'dotenv';
+
 class ApiClientService {
     constructor(baseURL) {
         this.httpClient = new HttpClient(baseURL);
@@ -121,6 +123,6 @@ class ApiClientService {
     }
 }
 
-const singleton = new ApiClientService("http://localhost:5143/");
+const singleton = new ApiClientService(process.env.API_URL);
 export default singleton;
 export { ApiClientService };
