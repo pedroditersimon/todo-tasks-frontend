@@ -121,6 +121,6 @@ class ApiClientService {
     }
 }
 
-const singleton = new ApiClientService("https://todo-tasks-api.onrender.com");
+const singleton = new ApiClientService("https://todo-tasks-api.onrender.com/");
 export default singleton;
 export { ApiClientService };
