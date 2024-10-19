@@ -25,7 +25,12 @@ function EditGoalPage({onCancel}) {
         ));
         listPage.setInitialItems(taskList);   
     }
-    useEffect(() => setInitialItems, []);
+    useEffect(() => {
+        setInitialItems();
+        return () => {
+            // Cleanup logic here
+        };
+    }, []);
 
     async function handleOnConfirm(confirmedGoal) {
         

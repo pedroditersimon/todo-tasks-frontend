@@ -18,13 +18,11 @@ function CreateGoalPage() {
         const tasks = await apiClientService.getAllTasks();
         // create new taskList but keeping the selected state
         const taskList = tasks.map(t => ListItem.FromTodoTask(t, listPage.isItemSelected(t.id))); 
-        listPage.setInitialItems(taskList);   
+        listPage.setInitialItems(taskList);
     }
     useEffect(() => setInitialItems, []);
 
     async function handleOnConfirm(confirmedGoal) {
-        
-
         // add every selected task to the goal
         const selectedItems = listPage.getSelectedItems();
         for (const item of selectedItems) {
