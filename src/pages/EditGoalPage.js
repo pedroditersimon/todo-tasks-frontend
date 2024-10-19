@@ -27,9 +27,7 @@ function EditGoalPage({onCancel}) {
     }
     useEffect(() => {
         setInitialItems();
-        return () => {
-            // Cleanup logic here
-        };
+        return () => {}; // only fetch when component is rendered not when unmount
     }, []);
 
     async function handleOnConfirm(confirmedGoal) {
