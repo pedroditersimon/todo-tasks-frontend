@@ -8,6 +8,7 @@ import apiClientService from "../../services/api/ApiClientService.js";
 import { useState, useEffect } from "react";
 import Loading from "../Loading.js";
 import FormField from "./FormField.js";
+import Checker from "../../utils/Checker.js";
 
 function CreateGoalForm({ goal, onChange, onTaskListClick, items_preview_text, isTaskListLoading, onCancel, onConfirm }) {
     const [currentGoal, setCurrentGoal] = useState(goal || {});
@@ -15,7 +16,7 @@ function CreateGoalForm({ goal, onChange, onTaskListClick, items_preview_text, i
 
     async function createGoal() {
         // empty name
-        if (currentGoal.name === undefined || currentGoal.name.trim() === "")
+        if (Checker.isStringEmpty(currentGoal.name))
             return;
 
         setDisableInputs(true);

@@ -10,7 +10,7 @@ import TextInput from "../Inputs/TextInput";
 import TextAreaInput from "../Inputs/TextAreaInput";
 import SwitchField from "../Inputs/SwitchField";
 import { useEffect, useState } from "react";
-
+import Checker from "../../utils/Checker.js";
 import apiClientService from "../../services/api/ApiClientService";
 import { TodoTask } from "../../services/api/models";
 
@@ -23,7 +23,7 @@ function EditTaskForm({ task, onConfirm, onCancel, onDelete }) {
 
     async function updateTask() {
         // empty name
-        if (currentTask.name === undefined || currentTask.name.trim() === "")
+        if (Checker.isStringEmpty(currentTask.name))
             return;
 
         setDisableInputs(true);

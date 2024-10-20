@@ -4,7 +4,7 @@ import TextInput from "../Inputs/TextInput";
 import TextAreaInput from "../Inputs/TextAreaInput";
 import apiClientService from "../../services/api/ApiClientService";
 import { TodoTask } from "../../services/api/models";
-
+import Checker from "../../utils/Checker.js";
 import { useContext, useState } from "react";
 
 function CreateTaskForm({ task, onCancel, onConfirm }) {
@@ -13,7 +13,7 @@ function CreateTaskForm({ task, onCancel, onConfirm }) {
 
     async function createTask() {
         // empty name
-        if (currentTask.name === undefined || currentTask.name.trim() === "")
+        if (Checker.isStringEmpty(currentTask.name))
             return;
 
         setDisableInputs(true);

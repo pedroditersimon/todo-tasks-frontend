@@ -13,6 +13,7 @@ import { useState, useEffect } from "react";
 import useLoading from "../../hooks/useLoading";
 import Loading from "../Loading";
 import FormField from "./FormField";
+import Checker from "../../utils/Checker.js";
 
 function EditGoalForm({ goal, onChange, onTaskListClick, items_preview_text, isTaskListLoading, onCancel, onConfirm, onDelete }) {
     const [currentGoal, setCurrentGoal] = useState(goal || {});
@@ -22,7 +23,7 @@ function EditGoalForm({ goal, onChange, onTaskListClick, items_preview_text, isT
 
     async function updateGoal() {
         // empty name
-        if (currentGoal.name === undefined || currentGoal.name.trim() === "")
+        if (Checker.isStringEmpty(currentGoal.name))
             return;
 
         setDisableInputs(true);
