@@ -23,19 +23,31 @@ import SelectableCard from "../components/Cards/SelectableCard";
 import { useNavigate } from "react-router-dom";
 import SearchBar from "../components/Inputs/SearchBar";
 import { useSearchBar } from "../hooks/useSearchBar";
+import useLoading from "../hooks/useLoading.js";
 
 function Home() {
     const navigate = useNavigate();
     const searchBar = useSearchBar();
     const [tasks, setTasks] = useState([]);
     const [goals, setGoals] = useState([]);
+    const loadingTaks = useLoading();
+    const loadingGoals = useLoading();
 
     useEffect(() => {
+        loadingTaks.setIsLoading(true);
+        loadingGoals.setIsLoading(true);
+        
         apiClientService.getAllTasks()
-            .then(ts => setTasks(ts));
+            .then(ts => {
+                setTasks(ts);
+                loadingTaks.setIsLoading(false);
+            });
         
         apiClientService.getAllGoals()
-            .then(gs => setGoals(gs));
+            .then(gs => {
+                setGoals(gs);
+                loadingGoals.setIsLoading(false);
+            });
     }, []);
 
     function redirect(url, state = null, replace = false) {
@@ -58,13 +70,18 @@ function Home() {
             <SearchBar onChange={searchBar.setValue} />
 
             <ElementList title="Tasks" onAddBtn={() => redirect("/create/task")}>
-                {tasks.filter(t => searchBar.has(t.name))
-                    .map(createTaskCard)}
-            </ElementList>
+                {loadingTaks.isLoading
+                    ? loadingTaks.show()
+                    : tasks.filter(t => searchBar.has(t.name)).map(createTaskCard)
+                }
+            </ElementList> 
+            
 
             <ElementList title="Goals" onAddBtn={() => redirect("/create/goal")}>
-                {goals.filter(g => searchBar.has(g.name))
-                    .map(createGoalCard)}
+                {loadingGoals.isLoading
+                    ? loadingGoals.show()
+                    : goals.filter(g => searchBar.has(g.name)).map(createGoalCard)
+                }
             </ElementList>
 
         </PageLayout>
