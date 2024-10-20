@@ -72,7 +72,7 @@ function EditTaskForm({ task, onConfirm, onCancel, onDelete }) {
             onHeaderSecondaryBtn={onCancel}
             disableInputs={disableInputs}
         >
-            <TextInput title="Name" value={currentTask.name} onChange={setName} />
+            <TextInput title="Name" value={currentTask.name} onChange={setName} required={true} />
             <TextAreaInput title="Description" value={currentTask.description} onChange={setDescription} />
             <SwitchField value={currentTask.isCompleted} onToggle={setCompleted} >Completed</SwitchField>
         </GenericForm>

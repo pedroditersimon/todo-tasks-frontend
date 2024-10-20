@@ -36,7 +36,7 @@ function CreateTaskForm({ task, onCancel, onConfirm }) {
             onHeaderSecondaryBtn={onCancel}
             disableInputs={disableInputs}
         >
-            <TextInput title="Name" value={currentTask.name} onChange={setName} />
+            <TextInput title="Name" value={currentTask.name} onChange={setName} required={true} />
             <TextAreaInput title="Description" value={currentTask.description} onChange={setDescription} />
         </GenericForm>
     );

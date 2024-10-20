@@ -76,7 +76,7 @@ function EditGoalForm({ goal, onChange, onTaskListClick, items_preview_text, isT
 
             disableInputs={disableInputs}
         >
-            <TextInput title="Name" value={currentGoal.name} onChange={setName} />
+            <TextInput title="Name" value={currentGoal.name} onChange={setName} required={true} />
             <TextAreaInput title="Description" value={currentGoal.description} onChange={setDescription} />
 
             {isTaskListLoading
