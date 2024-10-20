@@ -5,7 +5,7 @@ import "./PageLayout.css";
 
 function PageLayout({children}) {
     return (
-        <div className="layout">
+        <div className="layout fade-in-left">
             <Header />
             {children}
             <Footer />

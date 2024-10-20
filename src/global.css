@@ -61,3 +61,18 @@
 {
     to { transform: rotate(360deg); }
 }
+
+.fade-in-left {
+    animation: fade-in-left-anim 0.2s ease forwards;
+}
+
+@keyframes fade-in-left-anim {
+    0% {
+        opacity: 0;
+        transform: translateX(-10%); 
+    }
+    100% {
+        opacity: 1;
+        transform: translateX(0); 
+    }
+}
