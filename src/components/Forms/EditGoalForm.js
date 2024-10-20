@@ -15,18 +15,22 @@ import Loading from "../Loading";
 
 function EditGoalForm({ goal, onChange, onTaskListClick, items_preview_text, isTaskListLoading, onCancel, onConfirm, onDelete }) {
     const [currentGoal, setCurrentGoal] = useState(goal || {});
+    const [disableInputs, setDisableInputs] = useState(false);
 
     useEffect(() => setCurrentGoal(goal || {}), [goal]);
 
     async function updateGoal() {
+        setDisableInputs(true);
         const updatedGoal = await apiClientService.updateGoal(currentGoal);
         if (onConfirm) onConfirm(updatedGoal);
+        setDisableInputs(false);
     }
 
     async function deleteGoal() {
-        
+        setDisableInputs(true);
         const success = await apiClientService.deleteGoal(currentGoal.id);
         if (success && onDelete) onDelete();
+        setDisableInputs(false);
     }
 
     function setName(value) {
@@ -68,6 +72,8 @@ function EditGoalForm({ goal, onChange, onTaskListClick, items_preview_text, isT
             header_primary_icon={currentGoal.isFavorite?star_filled_icon:star_icon}
 
             onHeaderSecondaryBtn={onCancel}
+
+            disableInputs={disableInputs}
         >
             <TextInput title="Name" value={currentGoal.name} onChange={setName} />
             <TextAreaInput title="Description" value={currentGoal.description} onChange={setDescription} />

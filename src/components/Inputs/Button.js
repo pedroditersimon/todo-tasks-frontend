@@ -1,8 +1,9 @@
 
-function Button({onClick, className, children}) {
+function Button({onClick, className, disabled, children}) {
 
     function handleClickEvent(event) {
         event.stopPropagation();
+        if (disabled) return; // ignore if its disabled
         if (onClick) onClick();
     }
 

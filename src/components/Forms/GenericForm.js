@@ -22,6 +22,8 @@ function GenericForm({
         header_secondary_icon = close_icon,
         header_secondary_icon_hover,
 
+        disableInputs,
+
         children
     })
 {
@@ -34,6 +36,7 @@ function GenericForm({
                     onClick={onHeaderPrimaryBtn}
                     icon={header_primary_icon}
                     icon_hover={header_primary_icon_hover}
+                    disabled={disableInputs}
                 />
                 <span className="form-header-title">{title}</span>
                 <IconButton
@@ -41,6 +44,7 @@ function GenericForm({
                     onClick={onHeaderSecondaryBtn}
                     icon={header_secondary_icon}
                     icon_hover={header_secondary_icon_hover}
+                    disabled={disableInputs}
                 />
             </div>
 
@@ -50,10 +54,17 @@ function GenericForm({
 
             <div className="form-confirm">
                 { secondary_confirm_icon?
-                    <IconButton onClick={onSecondaryConfirm} icon={secondary_confirm_icon} icon_hover={secondary_confirm_icon_hover} className="form-confirm-btn secondary" />
+                    <IconButton
+                        onClick={onSecondaryConfirm}
+                        icon={secondary_confirm_icon}
+                        icon_hover={secondary_confirm_icon_hover}
+
+                        className="form-confirm-btn secondary"
+                        disabled={disableInputs}
+                    />
                 : null}
 
-                <Button onClick={onConfirm} className="form-confirm-btn" >{confirm_text}</Button>
+                <Button onClick={onConfirm} className="form-confirm-btn" disabled={disableInputs} >{confirm_text}</Button>
             </div>
             
         </div>

@@ -9,11 +9,13 @@ import { useContext, useState } from "react";
 
 function CreateTaskForm({ task, onCancel, onConfirm }) {
     const [currentTask, setCurrentTask] = useState(task || {});
+    const [disableInputs, setDisableInputs] = useState(false);
 
     async function createTask() {
-        
+        setDisableInputs(true);
         const createdTask = await apiClientService.createTask(currentTask);
         if (onConfirm) onConfirm(createdTask);
+        setDisableInputs(false);
     }
 
     function setName(value) {
@@ -32,6 +34,7 @@ function CreateTaskForm({ task, onCancel, onConfirm }) {
             confirm_text="Create"
             onConfirm={createTask}
             onHeaderSecondaryBtn={onCancel}
+            disableInputs={disableInputs}
         >
             <TextInput title="Name" value={currentTask.name} onChange={setName} />
             <TextAreaInput title="Description" value={currentTask.description} onChange={setDescription} />

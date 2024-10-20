@@ -2,7 +2,7 @@
 import { useState, useEffect } from "react";
 import "./IconButton.css";
 
-function IconButton({ onClick, className, icon, icon_hover }) {
+function IconButton({ onClick, className, icon, icon_hover, disabled }) {
     const [currentIcon, setCurrentIcon] = useState(icon);
 
     // update currentIcon when icon is modified
@@ -10,6 +10,7 @@ function IconButton({ onClick, className, icon, icon_hover }) {
 
     function handleClickEvent(event) {
         event.stopPropagation();
+        if (disabled) return; // ignore if its disabled
         if (onClick) onClick();
     }
 

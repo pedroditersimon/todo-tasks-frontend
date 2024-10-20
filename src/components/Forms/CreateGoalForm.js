@@ -10,10 +10,13 @@ import Loading from "../Loading.js";
 
 function CreateGoalForm({ goal, onChange, onTaskListClick, items_preview_text, isTaskListLoading, onCancel, onConfirm }) {
     const [currentGoal, setCurrentGoal] = useState(goal || {});
+    const [disableInputs, setDisableInputs] = useState(false);
 
     async function createGoal() {
+        setDisableInputs(true);
         const createdGoal = await apiClientService.createGoal(currentGoal);
         if (onConfirm) onConfirm(createdGoal);
+        setDisableInputs(false);
     }
 
     function setName(value) {
@@ -38,6 +41,7 @@ function CreateGoalForm({ goal, onChange, onTaskListClick, items_preview_text, i
             confirm_text="Create"
             onConfirm={createGoal}
             onHeaderSecondaryBtn={onCancel}
+            disableInputs={disableInputs}
         >
             <TextInput title="Name" value={currentGoal.name} onChange={setName} />
             <TextAreaInput title="Description" value={currentGoal.description} onChange={setDescription} />

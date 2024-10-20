@@ -35,8 +35,6 @@ function EditGoalPage({onCancel}) {
     }, []);
 
     async function handleOnConfirm(confirmedGoal) {
-        
-
         const goalTasks = await apiClientService.getTasksByGoalID(confirmedGoal.id);
 
         // remove every deselected task from the goal

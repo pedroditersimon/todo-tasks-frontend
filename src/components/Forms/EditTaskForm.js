@@ -17,20 +17,22 @@ import { TodoTask } from "../../services/api/models";
 
 function EditTaskForm({ task, onConfirm, onCancel, onDelete }) {
     const [currentTask, setCurrentTask] = useState(task || {});
+    const [disableInputs, setDisableInputs] = useState(false);
 
     useEffect(() => setCurrentTask(task || {}), [task]);
 
     async function updateTask() {
-        
+        setDisableInputs(true);
         const updatedTask = await apiClientService.updateTask(currentTask);
-        console.log("onConfirm");
         if (onConfirm) onConfirm(updatedTask);
+        setDisableInputs(false);
     }
 
     async function deleteTask() {
-        
+        setDisableInputs(true);
         const success = await apiClientService.deleteTask(currentTask.id);
         if (success && onDelete) onDelete();
+        setDisableInputs(false);
     }
 
     function setName(value) {
@@ -68,6 +70,7 @@ function EditTaskForm({ task, onConfirm, onCancel, onDelete }) {
             header_primary_icon={currentTask.isFavorite? star_filled_icon : star_icon}
 
             onHeaderSecondaryBtn={onCancel}
+            disableInputs={disableInputs}
         >
             <TextInput title="Name" value={currentTask.name} onChange={setName} />
             <TextAreaInput title="Description" value={currentTask.description} onChange={setDescription} />
