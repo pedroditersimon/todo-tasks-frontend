@@ -3,6 +3,7 @@ Todo:
 - Implementar una cache de uso global para no recuperar de los fetchs muchas veces
 - Validar formularios con formik
 - Arreglar, las rutas solo funcionan con redireccion, pero no se pueden acceder por url
+- Agregar selección en home para eliminar multiples elementos
 
 Done:
 - Usar REM y EM para tamaños de textos
