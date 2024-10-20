@@ -21,6 +21,10 @@ function EditGoalForm({ goal, onChange, onTaskListClick, items_preview_text, isT
     useEffect(() => setCurrentGoal(goal || {}), [goal]);
 
     async function updateGoal() {
+        // empty name
+        if (currentGoal.name === undefined || currentGoal.name.trim() === "")
+            return;
+
         setDisableInputs(true);
         const updatedGoal = await apiClientService.updateGoal(currentGoal);
         if (onConfirm) await onConfirm(updatedGoal);

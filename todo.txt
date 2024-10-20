@@ -1,7 +1,8 @@
 Todo:
 - Agregar paginacion
 - Implementar una cache de uso global para no recuperar de los fetchs muchas veces
-- Validar que los campos de los formularios no esten vacios (almenos el de nombre)
+- Validar formularios con formik
+- Arreglar, las rutas solo funcionan con redireccion, pero no se pueden acceder por url
 
 Done:
 - Usar REM y EM para tamaños de textos
@@ -14,3 +15,4 @@ Done:
 - Agregar indicadores de carga para los fetchs
 - Evitar multiples llamadas al boton de confirmar mientras ya se ha confirmado
 - Agregar animaciones
+- Validar el campo de 'nombre' de los formularios no esten vacios

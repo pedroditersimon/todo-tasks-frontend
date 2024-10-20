@@ -22,6 +22,10 @@ function EditTaskForm({ task, onConfirm, onCancel, onDelete }) {
     useEffect(() => setCurrentTask(task || {}), [task]);
 
     async function updateTask() {
+        // empty name
+        if (currentTask.name === undefined || currentTask.name.trim() === "")
+            return;
+
         setDisableInputs(true);
         const updatedTask = await apiClientService.updateTask(currentTask);
         if (onConfirm) await onConfirm(updatedTask);

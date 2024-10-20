@@ -12,6 +12,10 @@ function CreateTaskForm({ task, onCancel, onConfirm }) {
     const [disableInputs, setDisableInputs] = useState(false);
 
     async function createTask() {
+        // empty name
+        if (currentTask.name === undefined || currentTask.name.trim() === "")
+            return;
+
         setDisableInputs(true);
         const createdTask = await apiClientService.createTask(currentTask);
         if (onConfirm) await onConfirm(createdTask);
