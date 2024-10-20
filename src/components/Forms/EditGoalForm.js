@@ -10,14 +10,15 @@ import ListField from "../Inputs/ListField";
 import apiClientService from "../../services/api/ApiClientService";
 import { TodoGoal } from "../../services/api/models";
 import { useState, useEffect } from "react";
+import useLoading from "../../hooks/useLoading";
+import Loading from "../Loading";
 
-function EditGoalForm({ goal, onChange, onTaskListClick, items_preview_text, onCancel, onConfirm, onDelete }) {
+function EditGoalForm({ goal, onChange, onTaskListClick, items_preview_text, isTaskListLoading, onCancel, onConfirm, onDelete }) {
     const [currentGoal, setCurrentGoal] = useState(goal || {});
 
     useEffect(() => setCurrentGoal(goal || {}), [goal]);
 
     async function updateGoal() {
-        
         const updatedGoal = await apiClientService.updateGoal(currentGoal);
         if (onConfirm) onConfirm(updatedGoal);
     }
@@ -70,7 +71,12 @@ function EditGoalForm({ goal, onChange, onTaskListClick, items_preview_text, onC
         >
             <TextInput title="Name" value={currentGoal.name} onChange={setName} />
             <TextAreaInput title="Description" value={currentGoal.description} onChange={setDescription} />
-            <ListField title="Tasks" onClick={onTaskListClick} texts={items_preview_text} />
+
+            {isTaskListLoading
+                ? <Loading />
+                : <ListField title="Tasks" onClick={onTaskListClick} texts={items_preview_text} />
+            }
+            
         </GenericForm>
     );
 }

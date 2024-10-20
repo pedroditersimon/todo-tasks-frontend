@@ -6,6 +6,7 @@ import apiClientService from "../services/api/ApiClientService.js";
 import { ListItem } from "../components/Forms/SelectListForm";
 import { useState, useEffect } from "react";
 import { useSelectListPage } from "../hooks/useSelectListPage";
+import useLoading from "../hooks/useLoading.js";
 
 function EditGoalPage({onCancel}) {
     const navigate = useNavigate();
@@ -13,8 +14,10 @@ function EditGoalPage({onCancel}) {
     const { goal } = location.state || {};
     const [currentGoal, setCurrentGoal] = useState(goal || {});
     const listPage = useSelectListPage("Tasks", {goal:currentGoal});
+    const loadingTask = useLoading();
 
     async function setInitialItems() {
+        loadingTask.setIsLoading(true);
         const tasks = await apiClientService.getAllTasks();
         const goalTasks = await apiClientService.getTasksByGoalID(currentGoal.id);
 
@@ -23,7 +26,8 @@ function EditGoalPage({onCancel}) {
             ListItem.FromTodoTask(t, 
                 listPage.isItemSelected(t.id) || goalTasks.some(gt => gt.id === t.id)
         ));
-        listPage.setInitialItems(taskList);   
+        listPage.setInitialItems(taskList);
+        loadingTask.setIsLoading(false);
     }
     useEffect(() => {
         setInitialItems();
@@ -66,6 +70,7 @@ function EditGoalPage({onCancel}) {
 
                 items_preview_text={listPage.getSelectedTitles()}
                 onTaskListClick={listPage.open}
+                isTaskListLoading={loadingTask.isLoading}
             />
         </PageLayout>
     );
