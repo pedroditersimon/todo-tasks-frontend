@@ -50,3 +50,14 @@
 .btn:hover {
     cursor: pointer;
 }
+
+
+.rotate
+{
+    animation: spinner 1.5s linear infinite; 
+}
+
+@keyframes spinner 
+{
+    to { transform: rotate(360deg); }
+}
