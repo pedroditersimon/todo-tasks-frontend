@@ -12,6 +12,7 @@ import { TodoGoal } from "../../services/api/models";
 import { useState, useEffect } from "react";
 import useLoading from "../../hooks/useLoading";
 import Loading from "../Loading";
+import FormField from "./FormField";
 
 function EditGoalForm({ goal, onChange, onTaskListClick, items_preview_text, isTaskListLoading, onCancel, onConfirm, onDelete }) {
     const [currentGoal, setCurrentGoal] = useState(goal || {});
@@ -79,7 +80,7 @@ function EditGoalForm({ goal, onChange, onTaskListClick, items_preview_text, isT
             <TextAreaInput title="Description" value={currentGoal.description} onChange={setDescription} />
 
             {isTaskListLoading
-                ? <Loading />
+                ? <FormField title="Tasks"> <Loading /> </FormField> 
                 : <ListField title="Tasks" onClick={onTaskListClick} texts={items_preview_text} />
             }
             
