@@ -24,14 +24,14 @@ function EditTaskForm({ task, onConfirm, onCancel, onDelete }) {
     async function updateTask() {
         setDisableInputs(true);
         const updatedTask = await apiClientService.updateTask(currentTask);
-        if (onConfirm) onConfirm(updatedTask);
+        if (onConfirm) await onConfirm(updatedTask);
         setDisableInputs(false);
     }
 
     async function deleteTask() {
         setDisableInputs(true);
         const success = await apiClientService.deleteTask(currentTask.id);
-        if (success && onDelete) onDelete();
+        if (success && onDelete) await onDelete();
         setDisableInputs(false);
     }
 

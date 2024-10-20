@@ -23,14 +23,14 @@ function EditGoalForm({ goal, onChange, onTaskListClick, items_preview_text, isT
     async function updateGoal() {
         setDisableInputs(true);
         const updatedGoal = await apiClientService.updateGoal(currentGoal);
-        if (onConfirm) onConfirm(updatedGoal);
+        if (onConfirm) await onConfirm(updatedGoal);
         setDisableInputs(false);
     }
 
     async function deleteGoal() {
         setDisableInputs(true);
         const success = await apiClientService.deleteGoal(currentGoal.id);
-        if (success && onDelete) onDelete();
+        if (success && onDelete) await onDelete();
         setDisableInputs(false);
     }
 

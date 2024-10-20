@@ -16,7 +16,7 @@ function CreateGoalForm({ goal, onChange, onTaskListClick, items_preview_text, i
     async function createGoal() {
         setDisableInputs(true);
         const createdGoal = await apiClientService.createGoal(currentGoal);
-        if (onConfirm) onConfirm(createdGoal);
+        if (onConfirm) await onConfirm(createdGoal);
         setDisableInputs(false);
     }
 
