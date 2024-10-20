@@ -16,7 +16,7 @@ function IconButton({ onClick, className, icon, icon_hover, disabled }) {
 
     return (
         <div
-            className={`btn icon-button ${className}`}
+            className={`btn icon-button ${className} ${disabled && "disabled"}`}
             onClick={handleClickEvent}
             onMouseLeave={() => setCurrentIcon(icon)}
             onMouseEnter={() => setCurrentIcon(icon_hover??icon)}

@@ -8,7 +8,7 @@ function Button({onClick, className, disabled, children}) {
     }
 
     return (
-        <div className={`btn ${className}`} onClick={handleClickEvent}>
+        <div className={`btn ${className} ${disabled && "disabled"}`} onClick={handleClickEvent}>
             <span>{children}</span>
         </div>
     );
