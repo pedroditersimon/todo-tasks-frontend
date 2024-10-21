@@ -17,7 +17,7 @@ function EditGoalPage({onCancel}) {
     const loadingTask = useLoading();
 
     async function setInitialItems() {
-        loadingTask.setIsLoading(true);
+        loadingTask.setLoading(true);
         const tasks = await apiClientService.getAllTasks();
         const goalTasks = await apiClientService.getTasksByGoalID(currentGoal.id);
 
@@ -27,7 +27,7 @@ function EditGoalPage({onCancel}) {
                 listPage.isItemSelected(t.id) || goalTasks.some(gt => gt.id === t.id)
         ));
         listPage.setInitialItems(taskList);
-        loadingTask.setIsLoading(false);
+        loadingTask.setLoading(false);
     }
     useEffect(() => {
         setInitialItems();

@@ -17,12 +17,12 @@ function CreateGoalPage() {
     const loadingTask = useLoading();
     
     async function setInitialItems() {
-        loadingTask.setIsLoading(true);
+        loadingTask.setLoading(true);
         const tasks = await apiClientService.getAllTasks();
         // create new taskList but keeping the selected state
         const taskList = tasks.map(t => ListItem.FromTodoTask(t, listPage.isItemSelected(t.id))); 
         listPage.setInitialItems(taskList);
-        loadingTask.setIsLoading(false);
+        loadingTask.setLoading(false);
     }
     useEffect(() => {
         setInitialItems();
