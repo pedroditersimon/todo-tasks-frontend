@@ -24,29 +24,30 @@ import { useNavigate } from "react-router-dom";
 import SearchBar from "../components/Inputs/SearchBar";
 import { useSearchBar } from "../hooks/useSearchBar";
 import useLoading from "../hooks/useLoading.js";
+import FormField from "../components/Forms/FormField.js";
 
 function Home() {
     const navigate = useNavigate();
     const searchBar = useSearchBar();
     const [tasks, setTasks] = useState([]);
     const [goals, setGoals] = useState([]);
-    const loadingTaks = useLoading();
+    const loadingTasks = useLoading(false, true);
     const loadingGoals = useLoading();
 
     useEffect(() => {
-        loadingTaks.setIsLoading(true);
-        loadingGoals.setIsLoading(true);
+        loadingTasks.setLoading(true);
+        loadingGoals.setLoading(true);
         
         apiClientService.getAllTasks()
             .then(ts => {
                 setTasks(ts);
-                loadingTaks.setIsLoading(false);
+                loadingTasks.setLoading(false);
             });
         
         apiClientService.getAllGoals()
             .then(gs => {
                 setGoals(gs);
-                loadingGoals.setIsLoading(false);
+                loadingGoals.setLoading(false);
             });
     }, []);
 
@@ -64,16 +65,21 @@ function Home() {
     function createGoalCard(g) {
         return <GoalCard goal={g} onClick={()=> redirect("/edit/goal", {goal:g})} />
     }
-
+    console.log(loadingTasks.getLoadingTime()    );
     return (
         <PageLayout>
+            {loadingTasks.getLoadingTime() > 5000 &&
+                <FormField title="Backend server is starting...">
+                    <ProgressBar value={((loadingTasks.getLoadingTime()-5000)/30000)*100} />
+                </FormField>
+            }
+            
             <SearchBar onChange={searchBar.setValue} />
 
             <ElementList title="Tasks" onAddBtn={() => redirect("/create/task")}>
-                {loadingTaks.isLoading
-                    ? loadingTaks.show()
-                    : tasks.filter(t => searchBar.has(t.name)).map(createTaskCard)
-                }
+                {loadingTasks.showElement(
+                    tasks.filter(t => searchBar.has(t.name)).map(createTaskCard)
+                )}
             </ElementList> 
             
 
@@ -83,7 +89,6 @@ function Home() {
                     : goals.filter(g => searchBar.has(g.name)).map(createGoalCard)
                 }
             </ElementList>
-
         </PageLayout>
     );
 }
