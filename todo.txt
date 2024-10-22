@@ -1,8 +1,9 @@
 Todo:
 - Agregar paginacion
-- Implementar una cache de uso global para no recuperar de los fetchs muchas veces
 - Validar formularios con formik
+- Hacer fetchs solo si el formulario ha cambiado
 - Agregar selección en home para eliminar multiples elementos
+- Cambiar el icono de la app
 
 Done:
 - Usar REM y EM para tamaños de textos
@@ -19,3 +20,4 @@ Done:
 - Arreglar, las rutas solo funcionan con redireccion, pero no se pueden acceder por url
 - Agregar barra de espera mientras se enciende el servidor backend
 - Agregar .env para apiUrl
+- Implementar una cache en memoria para no recuperar muchas veces de los fetchs
