@@ -3,7 +3,6 @@ Todo:
 - Implementar una cache de uso global para no recuperar de los fetchs muchas veces
 - Validar formularios con formik
 - Agregar selección en home para eliminar multiples elementos
-- Agregar .env para apiUrl y cambiar el nombre del servicio de la api en render
 
 Done:
 - Usar REM y EM para tamaños de textos
@@ -19,3 +18,4 @@ Done:
 - Validar el campo de 'nombre' de los formularios no esten vacios
 - Arreglar, las rutas solo funcionan con redireccion, pero no se pueden acceder por url
 - Agregar barra de espera mientras se enciende el servidor backend
+- Agregar .env para apiUrl

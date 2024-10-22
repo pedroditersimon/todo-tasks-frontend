@@ -121,6 +121,8 @@ class ApiClientService {
     }
 }
 
-const singleton = new ApiClientService("https://todo-tasks-api.onrender.com/");
+// export singleton
+const singleton = new ApiClientService(process.env.REACT_APP_API_URL);
 export default singleton;
+
 export { ApiClientService };
