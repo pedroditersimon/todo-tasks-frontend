@@ -1,9 +1,8 @@
 Todo:
 - Agregar paginacion
 - Validar formularios con formik
-- Hacer fetchs solo si el formulario ha cambiado
 - Agregar selección en home para eliminar multiples elementos
-- Cambiar el icono de la app
+- Hacer fetchs solo si el formulario ha cambiado
 
 Done:
 - Usar REM y EM para tamaños de textos
@@ -21,3 +20,4 @@ Done:
 - Agregar barra de espera mientras se enciende el servidor backend
 - Agregar .env para apiUrl
 - Implementar una cache en memoria para no recuperar muchas veces de los fetchs
+- Cambiar el icono de la app
