@@ -1,6 +1,11 @@
 class HttpClient {
-    constructor(baseURL) {
+    constructor(baseURL="") {
         this.baseURL = baseURL;
+
+        // add '/' at the end of url
+        if (baseURL.charAt(baseURL.length - 1) !== '/') {
+            this.baseURL += `/`;
+        }
     }
 
     async get(endpoint) {
