@@ -8,6 +8,13 @@ La aplicacion utiliza una API backend que desarrollé en ASP.Net C#.
 Repositorio de la api:  
 https://github.com/pedroditersimon/todo-tasks-api
 
+## Features y implentaciones
+- Memory cache
+- Navigate pages with state (SelectListPage)
+- Hooks de react
+- Barra de busqueda
+- Loading status
+- Barra de espera mientras se enciende el backend
 
 ## Mockup
 Mockup de la interfaz en figma
