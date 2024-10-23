@@ -75,21 +75,28 @@ class HttpClient {
         return false;
     }
 
-    async patch(endpoint) {
+    async patch(endpoint, body) {
         try {
             const response = await fetch(`${this.baseURL}${endpoint}`, {
-                method: 'PATCH'
+                method: 'PATCH',
+                headers: {
+                    'Content-Type': 'application/json' // Asegúrate de definir el tipo de contenido
+                },
+                body: body ? JSON.stringify(body) : null // Solo incluye el cuerpo si está presente
             });
+    
             if (!response.ok) {
                 return null;
             }
+    
             return await response.json();
         } catch (error) {
             console.error('Error patching data:', error);
-            //throw error;
+            // throw error;
         }
         return null;
     }
+    
 
 }
 

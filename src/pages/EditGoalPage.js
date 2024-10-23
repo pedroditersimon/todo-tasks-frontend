@@ -42,18 +42,14 @@ function EditGoalPage({onCancel}) {
             const isGoalTask = goalTasks.some(t => t.id === i.id);
             return isGoalTask && !i.isSelected;
         });
-        for (const item of deselectedTasks) {
-            await apiClientService.removeTaskFromGoal(confirmedGoal.id, item.id);
-        };
-
+        await apiClientService.removeTaskFromGoal(confirmedGoal.id, deselectedTasks.map(i => i.id));
+        
         // add every selected task to the goal
         const selectedItems = listPage.getSelectedItems().filter(i => {
             const isAlreadySelected = goalTasks.some(t => t.id === i.id);
             return !isAlreadySelected;
         });
-        for (const item of selectedItems) {
-            await apiClientService.addTaskToGoal(confirmedGoal.id, item.id);
-        }
+        await apiClientService.addTaskToGoal(confirmedGoal.id, selectedItems.map(i => i.id));
         navigate(-1);
     }
 

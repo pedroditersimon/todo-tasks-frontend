@@ -185,8 +185,11 @@ class ApiClientService {
         return updatedGoal;
     }
 
-    async addTaskToGoal(goalId, taskId) {
-        const data = await this.httpClient.patch(`goals/AddTask?goalID=${goalId}&taskID=${taskId}`);
+    // taskIds: Array of ids [1,2,3]
+    async addTaskToGoal(goalId, taskIds) {
+        if (taskIds.length === 0) return; // no items
+
+        const data = await this.httpClient.patch(`goals/AddTask?goalID=${goalId}`, taskIds);
         if (data == null) return null;
 
         // need to re-fetch goals if a task is modified
@@ -195,8 +198,11 @@ class ApiClientService {
         return TodoGoal.fromJSON(data);
     }
 
-    async removeTaskFromGoal(goalId, taskId) {
-        const data = await this.httpClient.patch(`goals/RemoveTask?goalID=${goalId}&taskID=${taskId}`);
+    // taskIds: Array of ids [1,2,3]
+    async removeTaskFromGoal(goalId, taskIds) {
+        if (taskIds.length === 0) return; // no items
+        
+        const data = await this.httpClient.patch(`goals/RemoveTask?goalID=${goalId}`, taskIds);
         if (data == null) return null;
 
         // need to re-fetch goals if a task is modified

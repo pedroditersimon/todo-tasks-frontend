@@ -32,9 +32,7 @@ function CreateGoalPage() {
     async function handleOnConfirm(confirmedGoal) {
         // add every selected task to the goal
         const selectedItems = listPage.getSelectedItems();
-        for (const item of selectedItems) {
-            await apiClientService.addTaskToGoal(confirmedGoal.id, item.id);
-        }
+        await apiClientService.addTaskToGoal(confirmedGoal.id, selectedItems.map(i => i.id));
         navigate(-1);
     }
     console.log(listPage.items);

@@ -21,3 +21,4 @@ Done:
 - Agregar .env para apiUrl
 - Implementar una cache en memoria para no recuperar muchas veces de los fetchs
 - Cambiar el icono de la app
+- Utilizar un array de ids para agregar/eliminar multiples tareas a un goal.
