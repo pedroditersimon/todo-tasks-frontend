@@ -5,10 +5,10 @@ import star_icon from "../../assets/images/star.png";
 import star_filled_icon from "../../assets/images/star_filled.png";
 
 
-import GenericForm from "./GenericForm";
-import TextInput from "../Inputs/TextInput";
-import TextAreaInput from "../Inputs/TextAreaInput";
-import SwitchField from "../Inputs/SwitchField";
+import GenericForm from "./GenericForm.jsx";
+import TextInput from "../Inputs/TextInput.jsx";
+import TextAreaInput from "../Inputs/TextAreaInput.jsx";
+import SwitchField from "../Inputs/SwitchField.jsx";
 import { useEffect, useState } from "react";
 import Checker from "../../utils/Checker.js";
 import apiClientService from "../../services/api/ApiClientService";

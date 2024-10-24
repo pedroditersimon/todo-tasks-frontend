@@ -1,13 +1,13 @@
 
-import GenericForm from "./GenericForm";
-import TextInput from "../Inputs/TextInput";
-import TextAreaInput from "../Inputs/TextAreaInput";
-import ListField from "../Inputs/ListField";
-import { TodoGoal } from "../../services/api/models";
+import GenericForm from "./GenericForm.jsx";
+import TextInput from "../Inputs/TextInput.jsx";
+import TextAreaInput from "../Inputs/TextAreaInput.jsx";
+import ListField from "../Inputs/ListField.jsx";
+import { TodoGoal } from "../../services/api/models.js";
 import apiClientService from "../../services/api/ApiClientService.js";
 import { useState, useEffect } from "react";
-import Loading from "../Loading.js";
-import FormField from "./FormField.js";
+import Loading from "../Loading.jsx";
+import FormField from "./FormField.jsx";
 import Checker from "../../utils/Checker.js";
 
 function CreateGoalForm({ goal, onChange, onTaskListClick, items_preview_text, isTaskListLoading, onCancel, onConfirm }) {

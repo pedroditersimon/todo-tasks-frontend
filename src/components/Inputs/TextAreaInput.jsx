@@ -1,5 +1,5 @@
 import "./TextAreaInput.css";
-import FormField from "../Forms/FormField.js";
+import FormField from "../Forms/FormField.jsx";
 
 import { useEffect, useState, useRef } from "react";
 

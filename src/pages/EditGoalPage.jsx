@@ -1,12 +1,12 @@
 import CreateGoalForm from "../components/Forms/CreateGoalForm";
 import EditGoalForm from "../components/Forms/EditGoalForm";
-import PageLayout from "../layouts/PageLayout";
+import PageLayout from "../layouts/PageLayout.jsx";
 import { useNavigate, useLocation } from "react-router-dom";
 import apiClientService from "../services/api/ApiClientService.js";
-import { ListItem } from "../components/Forms/SelectListForm";
+import { ListItem } from "../components/Forms/SelectListForm.jsx";
 import { useState, useEffect } from "react";
-import { useSelectListPage } from "../hooks/useSelectListPage";
-import useLoading from "../hooks/useLoading.js";
+import { useSelectListPage } from "../hooks/useSelectListPage.jsx";
+import useLoading from "../hooks/useLoading.jsx";
 
 function EditGoalPage({onCancel}) {
     const navigate = useNavigate();

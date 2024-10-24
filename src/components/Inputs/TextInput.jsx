@@ -1,7 +1,7 @@
 
 import "./TextInput.css";
 
-import FormField from "../Forms/FormField.js";
+import FormField from "../Forms/FormField.jsx";
 import { useState } from "react";
 import Checker from "../../utils/Checker.js";
 

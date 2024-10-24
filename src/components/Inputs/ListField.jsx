@@ -1,8 +1,8 @@
 
 import "./ListField.css";
 import edit_icon from "../../assets/images/edit.png";
-import IconButton from "../Inputs/IconButton.js";
-import FormField from "../Forms/FormField.js";
+import IconButton from "./IconButton.jsx";
+import FormField from "../Forms/FormField.jsx";
 
 function ListField({title, error_msg, onClick, texts=[]}) {
 

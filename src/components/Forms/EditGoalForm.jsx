@@ -3,16 +3,16 @@ import trash_red_icon from "../../assets/images/trash_red.png";
 import star_icon from "../../assets/images/star.png";
 import star_filled_icon from "../../assets/images/star_filled.png";
 
-import GenericForm from "./GenericForm";
-import TextInput from "../Inputs/TextInput";
-import TextAreaInput from "../Inputs/TextAreaInput";
-import ListField from "../Inputs/ListField";
-import apiClientService from "../../services/api/ApiClientService";
-import { TodoGoal } from "../../services/api/models";
+import GenericForm from "./GenericForm.jsx";
+import TextInput from "../Inputs/TextInput.jsx";
+import TextAreaInput from "../Inputs/TextAreaInput.jsx";
+import ListField from "../Inputs/ListField.jsx";
+import apiClientService from "../../services/api/ApiClientService.js";
+import { TodoGoal } from "../../services/api/models.js";
 import { useState, useEffect } from "react";
-import useLoading from "../../hooks/useLoading";
-import Loading from "../Loading";
-import FormField from "./FormField";
+import useLoading from "../../hooks/useLoading.jsx";
+import Loading from "../Loading.jsx";
+import FormField from "./FormField.jsx";
 import Checker from "../../utils/Checker.js";
 
 function EditGoalForm({ goal, onChange, onTaskListClick, items_preview_text, isTaskListLoading, onCancel, onConfirm, onDelete }) {

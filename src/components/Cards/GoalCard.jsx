@@ -4,9 +4,9 @@ import star_icon from "../../assets/images/star.png";
 import star_filled_icon from "../../assets/images/star_filled.png";
 import check_icon from "../../assets/images/check.png";
 
-import ProgressBar from "../ProgressBar";
+import ProgressBar from "../ProgressBar.jsx";
 
-import GenericCard from "./GenericCard";
+import GenericCard from "./GenericCard.jsx";
 import { TodoGoal } from "../../services/api/models";
 import { useEffect, useState } from "react";
 import apiClientService from "../../services/api/ApiClientService.js";

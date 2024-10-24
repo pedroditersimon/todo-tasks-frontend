@@ -2,10 +2,10 @@ import { useLocation, useNavigate } from "react-router-dom";
 import CreateGoalForm from "../components/Forms/CreateGoalForm";
 import PageLayout from "../layouts/PageLayout";
 import apiClientService from "../services/api/ApiClientService";
-import { ListItem } from "../components/Forms/SelectListForm";
-import { useSelectListPage } from "../hooks/useSelectListPage";
+import { ListItem } from "../components/Forms/SelectListForm.jsx";
+import { useSelectListPage } from "../hooks/useSelectListPage.jsx";
 import { useEffect, useState } from "react";
-import useLoading from "../hooks/useLoading";
+import useLoading from "../hooks/useLoading.jsx";
 
 
 function CreateGoalPage() {

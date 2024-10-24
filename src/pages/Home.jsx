@@ -1,13 +1,13 @@
 import apiClientService from "../services/api/ApiClientService.js";
-import PageLayout from "../layouts/PageLayout";
+import PageLayout from "../layouts/PageLayout.jsx";
 
 import { useEffect, useState } from "react";
 import { TodoGoal, TodoTask } from "../services/api/models";
-import TaskCard from "../components/Cards/TaskCard";
+import TaskCard from "../components/Cards/TaskCard.jsx";
 import GoalCard from "../components/Cards/GoalCard";
 
-import ProgressBar from "../components/ProgressBar";
-import ElementList from "../components/ElementsList";
+import ProgressBar from "../components/ProgressBar.jsx";
+import ElementList from "../components/ElementsList.jsx";
 
 
 import CreateTaskForm from "../components/Forms/CreateTaskForm";
@@ -15,16 +15,16 @@ import EditTaskForm from "../components/Forms/EditTaskForm";
 
 import CreateGoalForm from "../components/Forms/CreateGoalForm";
 
-import SelectListForm, { ListItem } from "../components/Forms/SelectListForm";
+import SelectListForm, { ListItem } from "../components/Forms/SelectListForm.jsx";
 import EditGoalForm from "../components/Forms/EditGoalForm";
 
-import SelectableCard from "../components/Cards/SelectableCard";
+import SelectableCard from "../components/Cards/SelectableCard.jsx";
 
 import { useNavigate } from "react-router-dom";
-import SearchBar from "../components/Inputs/SearchBar";
-import { useSearchBar } from "../hooks/useSearchBar";
-import useLoading from "../hooks/useLoading.js";
-import FormField from "../components/Forms/FormField.js";
+import SearchBar from "../components/Inputs/SearchBar.jsx";
+import { useSearchBar } from "../hooks/useSearchBar.jsx";
+import useLoading from "../hooks/useLoading.jsx";
+import FormField from "../components/Forms/FormField.jsx";
 
 function Home() {
     const navigate = useNavigate();

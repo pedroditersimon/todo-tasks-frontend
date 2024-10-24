@@ -1,7 +1,7 @@
 
-import GenericForm from "./GenericForm";
-import TextInput from "../Inputs/TextInput";
-import TextAreaInput from "../Inputs/TextAreaInput";
+import GenericForm from "./GenericForm.jsx";
+import TextInput from "../Inputs/TextInput.jsx";
+import TextAreaInput from "../Inputs/TextAreaInput.jsx";
 import apiClientService from "../../services/api/ApiClientService";
 import { TodoTask } from "../../services/api/models";
 import Checker from "../../utils/Checker.js";
