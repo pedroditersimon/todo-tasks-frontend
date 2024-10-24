@@ -1,0 +1,30 @@
+.icon-button-text {
+    display: flex;
+    flex-direction: row;
+
+    justify-content: space-around;
+    align-items: center;
+
+    padding: var(--size-smaller);
+    width: min-content;
+
+    background-color: var(--color-primary);
+    border-radius: var(--size-radius-border);
+    text-decoration: none;
+}
+
+.icon-button-text:hover {
+    background-color: var(--color-primary-hover);
+    cursor: pointer;
+}
+
+.icon-button-text-icon {
+    width: 25px;
+    margin-right: var(--size-smaller);
+}
+
+.icon-button-text-title {
+    color: var(--color-secondary-hover);
+    font-size: medium;
+    font-weight: 500;
+}
