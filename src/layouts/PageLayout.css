@@ -1,6 +1,7 @@
 .layout {
     margin: auto 5%;
     min-height: 100vh;
+    max-height: 100vh;
     box-sizing: border-box;
 
     background-color: var(--color-background);
