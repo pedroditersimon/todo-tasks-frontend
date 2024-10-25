@@ -11,11 +11,13 @@ import CreateTaskPage from './pages/CreateTaskPage';
 import EditGoalPage from './pages/EditGoalPage';
 import EditTaskPage from './pages/EditTaskPage';
 import SelectListPage from './pages/SelectListPage';
+import ScrollToTop from './components/ScrollToTop.jsx';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <React.StrictMode>
     <HashRouter basename='/'>
+      <ScrollToTop />
       <Routes>
 
         <Route path='/' element={<Home />} />

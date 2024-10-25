@@ -65,7 +65,7 @@ function Home() {
     function createGoalCard(g) {
         return <GoalCard goal={g} onClick={()=> redirect("/edit/goal", {goal:g})} />
     }
-    console.log(loadingTasks.getLoadingTime()    );
+
     return (
         <PageLayout>
             {loadingTasks.getLoadingTime() > 5000 &&

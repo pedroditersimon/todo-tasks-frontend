@@ -3,7 +3,7 @@ Todo:
 - Validar formularios con formik
 - Agregar selección en home para eliminar multiples elementos
 - Hacer fetchs solo si el formulario ha cambiado
-- Resetear el scroll al cambiar de pagina
+- Agregar unique ids to elements lists
 
 Done:
 - Usar REM y EM para tamaños de textos
@@ -27,3 +27,4 @@ Done:
 - Agregar cuadro de confirmación para eliminar 
 - Arreglar, las rutas solo funcionan con redireccion, pero no se pueden acceder por url
 - Cuadro de confirmación para eliminar goals
+- Resetear el scroll al cambiar de pagina
