@@ -59,11 +59,11 @@ function Home() {
     }
 
     function createTaskCard(t) {
-        return <TaskCard task={t} onClick={()=> redirect("/edit/task", {task:t})} />
+        return <TaskCard key={t.id} task={t} onClick={()=> redirect("/edit/task", {task:t})} />
     }
 
     function createGoalCard(g) {
-        return <GoalCard goal={g} onClick={()=> redirect("/edit/goal", {goal:g})} />
+        return <GoalCard key={g.id} goal={g} onClick={()=> redirect("/edit/goal", {goal:g})} />
     }
 
     return (

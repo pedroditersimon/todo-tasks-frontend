@@ -3,7 +3,7 @@ Todo:
 - Validar formularios con formik
 - Agregar selección en home para eliminar multiples elementos
 - Hacer fetchs solo si el formulario ha cambiado
-- Agregar unique ids to elements lists
+- En mobile el footer se ve mas abajo de lo normal
 
 Done:
 - Usar REM y EM para tamaños de textos
@@ -28,3 +28,4 @@ Done:
 - Arreglar, las rutas solo funcionan con redireccion, pero no se pueden acceder por url
 - Cuadro de confirmación para eliminar goals
 - Resetear el scroll al cambiar de pagina
+- Agregar unique ids to elements lists
