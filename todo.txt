@@ -4,6 +4,7 @@ Todo:
 - Agregar selección en home para eliminar multiples elementos
 - Hacer fetchs solo si el formulario ha cambiado
 - Agregar cuadro de confirmación para eliminar 
+- Arreglar, las rutas solo funcionan con redireccion, pero no se pueden acceder por url
 
 Done:
 - Usar REM y EM para tamaños de textos
@@ -17,11 +18,10 @@ Done:
 - Evitar multiples llamadas al boton de confirmar mientras ya se ha confirmado
 - Agregar animaciones
 - Validar el campo de 'nombre' de los formularios no esten vacios
-- Arreglar, las rutas solo funcionan con redireccion, pero no se pueden acceder por url
 - Agregar barra de espera mientras se enciende el servidor backend
 - Agregar .env para apiUrl
 - Implementar una cache en memoria para no recuperar muchas veces de los fetchs
 - Cambiar el icono de la app
 - Utilizar un array de ids para agregar/eliminar multiples tareas a un goal.
-- - Agregar informacion About en el footer, como link a repositorio y a la api
+- Agregar informacion About en el footer, como link a repositorio y a la api
 - Achicar el padding top y bottom de los links del footer
