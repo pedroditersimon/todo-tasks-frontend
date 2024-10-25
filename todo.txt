@@ -3,7 +3,6 @@ Todo:
 - Validar formularios con formik
 - Agregar selección en home para eliminar multiples elementos
 - Hacer fetchs solo si el formulario ha cambiado
-- Arreglar, las rutas solo funcionan con redireccion, pero no se pueden acceder por url
 
 Done:
 - Usar REM y EM para tamaños de textos
@@ -25,3 +24,4 @@ Done:
 - Agregar informacion About en el footer, como link a repositorio y a la api
 - Achicar el padding top y bottom de los links del footer
 - Agregar cuadro de confirmación para eliminar 
+- Arreglar, las rutas solo funcionan con redireccion, pero no se pueden acceder por url

@@ -3,7 +3,7 @@ import ReactDOM from 'react-dom/client';
 import './index.css';
 import "./global.css";
 
-import { BrowserRouter, Route, Routes } from 'react-router-dom';
+import { HashRouter, Route, Routes } from 'react-router-dom';
 import Home from './pages/Home';
 import NotFound from './pages/NotFound';
 import CreateGoalPage from './pages/CreateGoalPage';
@@ -15,7 +15,7 @@ import SelectListPage from './pages/SelectListPage';
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <React.StrictMode>
-    <BrowserRouter basename='/'>
+    <HashRouter basename='/'>
       <Routes>
 
         <Route path='/' element={<Home />} />
@@ -30,6 +30,6 @@ root.render(
         <Route path='/select' element={<SelectListPage />} />
 
       </Routes>
-    </BrowserRouter>
+    </HashRouter>
   </React.StrictMode>
 );
