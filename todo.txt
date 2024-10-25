@@ -4,7 +4,7 @@ Todo:
 - Agregar selección en home para eliminar multiples elementos
 - Hacer fetchs solo si el formulario ha cambiado
 - Agregar cuadro de confirmación para eliminar 
-- Agregar informacion About en el footer, como link a repositorio y a la api
+- Achicar el padding top y bottom de los links del footer
 
 Done:
 - Usar REM y EM para tamaños de textos
@@ -24,3 +24,4 @@ Done:
 - Implementar una cache en memoria para no recuperar muchas veces de los fetchs
 - Cambiar el icono de la app
 - Utilizar un array de ids para agregar/eliminar multiples tareas a un goal.
+- - Agregar informacion About en el footer, como link a repositorio y a la api
