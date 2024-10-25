@@ -4,13 +4,13 @@ import star_icon from "../../assets/images/star.png";
 import star_filled_icon from "../../assets/images/star_filled.png";
 
 import GenericForm from "./GenericForm.jsx";
+import ConfirmForm from "./ConfirmForm.jsx";
 import TextInput from "../Inputs/TextInput.jsx";
 import TextAreaInput from "../Inputs/TextAreaInput.jsx";
 import ListField from "../Inputs/ListField.jsx";
 import apiClientService from "../../services/api/ApiClientService.js";
 import { TodoGoal } from "../../services/api/models.js";
 import { useState, useEffect } from "react";
-import useLoading from "../../hooks/useLoading.jsx";
 import Loading from "../Loading.jsx";
 import FormField from "./FormField.jsx";
 import Checker from "../../utils/Checker.js";
@@ -18,6 +18,7 @@ import Checker from "../../utils/Checker.js";
 function EditGoalForm({ goal, onChange, onTaskListClick, items_preview_text, isTaskListLoading, onCancel, onConfirm, onDelete }) {
     const [currentGoal, setCurrentGoal] = useState(goal || {});
     const [disableInputs, setDisableInputs] = useState(false);
+    const [confirmDeletion, setConfirmDeletion] = useState(false);
 
     useEffect(() => setCurrentGoal(goal || {}), [goal]);
 
@@ -63,11 +64,30 @@ function EditGoalForm({ goal, onChange, onTaskListClick, items_preview_text, isT
         if (onChange) onChange(newGoal);
     }
 
+    if (confirmDeletion) {
+        return (
+            <ConfirmForm
+                onConfirm={deleteGoal}
+                onCancel={() => setConfirmDeletion(false)}
+
+                title="Goal"
+                confirm_text="Delete"
+
+                is_confirm_warning={true}
+                disabled={disableInputs}
+            >
+                <FormField title="Do you want to delete this goal?">
+                    <span className="confirm-deletion-task-name">{currentGoal.name}</span>
+                </FormField>
+            </ConfirmForm>
+        );
+    }
+
     return (
         <GenericForm 
             title="Edit goal"
 
-            onSecondaryConfirm={deleteGoal}
+            onSecondaryConfirm={() => setConfirmDeletion(true)}
             secondary_confirm_icon={trash_icon}
             secondary_confirm_icon_hover={trash_red_icon}
 
