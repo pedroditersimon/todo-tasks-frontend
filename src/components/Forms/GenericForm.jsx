@@ -7,8 +7,10 @@ import "./GenericForm.css";
 
 function GenericForm({
         title = "Form",
+
         onConfirm,
         confirm_text = "Button",
+        is_confirm_warning =false,
 
         onSecondaryConfirm,
         secondary_confirm_icon,
@@ -64,7 +66,7 @@ function GenericForm({
                     />
                 : null}
 
-                <Button onClick={onConfirm} className="form-confirm-btn" disabled={disableInputs} >{confirm_text}</Button>
+                <Button onClick={onConfirm} className={`form-confirm-btn ${is_confirm_warning && "warning"}`} disabled={disableInputs} >{confirm_text}</Button>
             </div>
             
         </div>

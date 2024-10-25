@@ -1,0 +1,13 @@
+.confirm-deletion-task-name {
+    margin-top: var(--size-tiny);
+
+    background-color: var(--color-background);
+    border: var(--size-border) dashed var(--color-warning);
+    border-radius: var(--size-radius-border);
+
+    padding: var(--size-smaller);
+
+    color: var(--color-secondary-text);
+    font-size: medium;
+    font-weight: 500;
+}

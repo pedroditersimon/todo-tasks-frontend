@@ -60,12 +60,18 @@
 
 .form-confirm-btn:hover {
     background-color: var(--color-primary-hover);
-
-    border-radius: var(--size-radius-border);
 }
 
 
 .form-confirm-btn.secondary {
     background-color: var(--color-secondary-hover);
     flex-grow: 0;
+}
+
+/* warning style */
+.form-confirm-btn.warning {
+    background-color: var(--color-warning);
+}
+.form-confirm-btn.warning:hover {
+    background-color: var(--color-warning-hover);
 }

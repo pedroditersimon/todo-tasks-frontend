@@ -6,6 +6,7 @@ import star_filled_icon from "../../assets/images/star_filled.png";
 
 
 import GenericForm from "./GenericForm.jsx";
+import ConfirmForm from "./ConfirmForm.jsx";
 import TextInput from "../Inputs/TextInput.jsx";
 import TextAreaInput from "../Inputs/TextAreaInput.jsx";
 import SwitchField from "../Inputs/SwitchField.jsx";
@@ -13,11 +14,14 @@ import { useEffect, useState } from "react";
 import Checker from "../../utils/Checker.js";
 import apiClientService from "../../services/api/ApiClientService";
 import { TodoTask } from "../../services/api/models";
+import FormField from "./FormField.jsx";
 
+import "./EditTaskForm.css";
 
 function EditTaskForm({ task, onConfirm, onCancel, onDelete }) {
     const [currentTask, setCurrentTask] = useState(task || {});
     const [disableInputs, setDisableInputs] = useState(false);
+    const [confirmDeletion, setConfirmDeletion] = useState(false);
 
     useEffect(() => setCurrentTask(task || {}), [task]);
 
@@ -59,11 +63,30 @@ function EditTaskForm({ task, onConfirm, onCancel, onDelete }) {
         setCurrentTask(TodoTask.fromJSON(currentTask));
     }
 
+    if (confirmDeletion) {
+        return (
+            <ConfirmForm
+                onConfirm={deleteTask}
+                onCancel={() => setConfirmDeletion(false)}
+
+                title="Task"
+                confirm_text="Delete"
+
+                is_confirm_warning={true}
+                disabled={disableInputs}
+            >
+                <FormField title="Do you want to delete this task?">
+                    <span className="confirm-deletion-task-name">{currentTask.name}</span>
+                </FormField>
+            </ConfirmForm>
+        );
+    }
+
     return (
         <GenericForm
             title="Edit task"
 
-            onSecondaryConfirm={deleteTask}
+            onSecondaryConfirm={() => setConfirmDeletion(true)}
             secondary_confirm_icon={trash_icon}
             secondary_confirm_icon_hover={trash_red_icon}
 
