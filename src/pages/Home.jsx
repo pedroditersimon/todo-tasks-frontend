@@ -70,7 +70,7 @@ function Home() {
         <PageLayout>
             {loadingTasks.getLoadingTime() > 5000 &&
                 <FormField title="Backend server is starting...">
-                    <ProgressBar value={((loadingTasks.getLoadingTime()-5000)/30000)*100} />
+                    <ProgressBar value={((loadingTasks.getLoadingTime())/40000)*100} />
                 </FormField>
             }
             
