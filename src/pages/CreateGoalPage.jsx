@@ -19,14 +19,14 @@ function CreateGoalPage() {
     async function setInitialItems() {
         loadingTask.setLoading(true);
         const tasks = await apiClientService.getAllTasks();
-        // create new taskList but keeping the selected state
+        // create new taskList but keeping the same selected state
         const taskList = tasks.map(t => ListItem.FromTodoTask(t, listPage.isItemSelected(t.id))); 
         listPage.setInitialItems(taskList);
         loadingTask.setLoading(false);
     }
     useEffect(() => {
         setInitialItems();
-        return () => {}; // only fetch when component is rendered not when unmount
+        return () => {}; // prevent call when component is unmounted
     }, []);
 
     async function handleOnConfirm(confirmedGoal) {

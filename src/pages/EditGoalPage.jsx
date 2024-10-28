@@ -31,7 +31,7 @@ function EditGoalPage({onCancel}) {
     }
     useEffect(() => {
         setInitialItems();
-        return () => {}; // only fetch when component is rendered not when unmount
+        return () => {}; // prevent call when component is unmounted
     }, []);
 
     async function handleOnConfirm(confirmedGoal) {
